@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Communications | Motability Portal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="app">
+    <header class="topbar">
+      <div class="topbar__brand">
+        <a class="brand-mark" href="index.html" aria-label="Home">
+            <img src="logo.jpg" alt="Motability Operations" href="index.html"/>
+        </a>
+        <div>
+          <p class="topbar__eyebrow">Motability Scheme</p>
+          <h1 class="topbar__title">Remote Home Assessor Portal</h1>
+        </div>
+      </div>
+
+      <nav class="topnav" aria-label="Primary">
+        <a href="users-profiles.html">Users</a>
+        <a href="ai-chatbot-dashboard.html">AI</a>
+        <a href="communications.html">Communications</a>
+        <a href="suppliers.html" aria-current="page">Suppliers</a>
+      </nav>
+
+      <div class="topbar__actions">
+        <button class="icon-btn" type="button" aria-label="Search">
+          <span aria-hidden="true">⌕</span>
+        </button>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">
+          <span class="theme-toggle__icon" aria-hidden="true">☾</span>
+          <span class="theme-toggle__label">Dark mode</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="main" class="page">
+      <section class="hero">
+        <div class="hero__content">
+          <p class="eyebrow">Communications</p>
+          <h2>Calls, video, and messages with customers.</h2>
+          <p>
+            Move between live calls and chat without leaving the portal. Keep it simple, fast, and ready for human handover.
+          </p>
+        </div>
+
+        <div class="hero__actions">
+          <button class="btn btn-primary" type="button" id="startCallBtn">Start call</button>
+          <button class="btn btn-ghost" type="button" id="newMessageBtn">New message</button>
+          <button class="btn btn-ghost" type="button" id="handoverBtn">Human handover</button>
+        </div>
+      </section>
+
+      <section class="kpi-grid comms-kpis" aria-label="Communication metrics">
+        <article class="kpi-card">
+          <span class="kpi-card__label">Live calls</span>
+          <span class="kpi-card__value" id="kpiLiveCalls">5</span>
+          <span class="kpi-card__sub">Customers currently connected</span>
+        </article>
+
+        <article class="kpi-card">
+          <span class="kpi-card__label">Waiting messages</span>
+          <span class="kpi-card__value" id="kpiWaiting">3</span>
+          <span class="kpi-card__sub">Needs a response from the team</span>
+        </article>
+
+        <article class="kpi-card">
+          <span class="kpi-card__label">Human handovers</span>
+          <span class="kpi-card__value" id="kpiHandover">1</span>
+          <span class="kpi-card__sub">Escalated from AI or call flow</span>
+        </article>
+      </section>
+
+      <div class="status-banner" id="statusBanner" aria-live="polite"></div>
+
+      <section class="comms-layout" aria-label="Communications dashboard">
+        <aside class="panel comms-list-card" aria-label="Conversation list">
+          <div class="panel__head comms-list-card__head">
+            <div>
+              <h3>Conversations</h3>
+              <p>Recent calls, chats, and video sessions.</p>
+            </div>
+            <button class="action-link" type="button" id="newConversationBtn">+ New</button>
+          </div>
+
+          <div class="channel-tabs" role="tablist" aria-label="Conversation filters">
+            <button class="chat-tab is-active" type="button" data-filter="all" aria-pressed="true">All</button>
+            <button class="chat-tab" type="button" data-filter="live" aria-pressed="false">Live</button>
+            <button class="chat-tab" type="button" data-filter="messages" aria-pressed="false">Messages</button>
+            <button class="chat-tab" type="button" data-filter="video" aria-pressed="false">Video</button>
+          </div>
+
+          <label class="searchbar searchbar--full" for="chatSearch">
+            <span class="searchbar__icon" aria-hidden="true">⌕</span>
+            <input id="chatSearch" type="search" placeholder="Search customers..." />
+          </label>
+
+          <div class="conversation-list" id="conversationList" role="list" aria-label="Customers">
+            <!-- injected -->
+          </div>
+        </aside>
+
+        <section class="panel comms-room-card" aria-label="Active conversation">
+          <div class="comms-room__head">
+            <div class="comms-person">
+              <div class="avatar avatar--lg" id="activeInitials">AD</div>
+              <div>
+                <h3 id="activeName">Angela Diaz</h3>
+                <p id="activeMeta">Live video · Last seen 10:30am</p>
+              </div>
+            </div>
+
+            <div class="comms-room__tools">
+              <button class="icon-btn icon-btn--small" type="button" id="voiceBtn" aria-label="Voice call">☎</button>
+              <button class="icon-btn icon-btn--small" type="button" id="videoBtn" aria-label="Video call">▣</button>
+              <button class="icon-btn icon-btn--small" type="button" id="muteBtn" aria-label="Mute">⊘</button>
+              <button class="icon-btn icon-btn--small" type="button" id="pauseBtn" aria-label="Pause">Ⅱ</button>
+            </div>
+          </div>
+
+          <div class="call-stage" id="callStage">
+            <div class="call-stage__video">
+              <div class="call-stage__status">
+                <span class="status-dot"></span>
+                <span id="activeChannelLabel">Video call</span>
+              </div>
+
+              <div class="video-preview">
+                <div class="video-preview__avatar" id="stageAvatar">AD</div>
+                <div>
+                  <p class="video-preview__title" id="stageTitle">Connected with Angela Diaz</p>
+                  <p class="video-preview__subtitle" id="stageSubtitle">Use the controls below to switch between voice, video, or message view.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="call-stage__meta">
+              <div class="meta-chip">
+                <span class="meta-chip__label">Call timer</span>
+                <span class="meta-chip__value" id="callTimer">13:02</span>
+              </div>
+              <div class="meta-chip">
+                <span class="meta-chip__label">Mode</span>
+                <span class="meta-chip__value" id="callModeLabel">Video</span>
+              </div>
+              <div class="meta-chip">
+                <span class="meta-chip__label">Status</span>
+                <span class="meta-chip__value" id="callStatusLabel">On call</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="message-thread" id="messageThread" aria-label="Conversation messages">
+            <!-- injected -->
+          </div>
+
+          <footer class="composer" aria-label="Message composer">
+            <label class="composer__field">
+              <span class="sr-only">Type a message</span>
+              <input id="messageInput" type="text" placeholder="Type a message, note, or instruction..." />
+            </label>
+
+            <div class="composer__actions">
+              <button class="icon-btn icon-btn--small" type="button" aria-label="Attach">＋</button>
+              <button class="icon-btn icon-btn--small" type="button" aria-label="Insert template">◫</button>
+              <button class="btn btn-ghost" type="button" id="handoverInlineBtn">Human handover</button>
+              <button class="btn btn-primary" type="button" id="sendBtn">Send</button>
+            </div>
+          </footer>
+        </section>
+
+        <aside class="sidebar comms-side" aria-label="Call details">
+          <section class="panel">
+            <div class="panel__head">
+              <div>
+                <h3>Today’s queue</h3>
+                <p>Customers waiting for a callback or follow-up.</p>
+              </div>
+            </div>
+
+            <div class="panel__body">
+              <ul class="queue-list" id="queueList"></ul>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel__head">
+              <div>
+                <h3>Live team</h3>
+                <p>People available for escalation.</p>
+              </div>
+            </div>
+
+            <div class="panel__body">
+              <ul class="team-list">
+                <li><span class="team-dot team-dot--on"></span> Mia Clark · Assessor</li>
+                <li><span class="team-dot team-dot--on"></span> Leo Evans · Communications</li>
+                <li><span class="team-dot team-dot--off"></span> Ava Green · Off call</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel__head">
+              <div>
+                <h3>Notes</h3>
+                <p>Quick prompts for the active customer.</p>
+              </div>
+            </div>
+
+            <div class="panel__body">
+              <div class="note-card" id="noteCard">
+                Confirm identity, check progress on the form, and escalate to a human if the customer asks for a final decision.
+              </div>
+              <div class="panel__actions">
+                <button class="btn btn-ghost btn-block" type="button">Add note</button>
+                <button class="btn btn-primary btn-block" type="button">Escalate to assessor</button>
+              </div>
+            </div>
+          </section>
+        </aside>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const root = document.documentElement;
+    const themeToggle = document.querySelector("[data-theme-toggle]");
+    const themeIcon = document.querySelector(".theme-toggle__icon");
+    const themeLabel = document.querySelector(".theme-toggle__label");
+
+    const savedTheme = localStorage.getItem("motability-theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const initialTheme = savedTheme || (prefersDark ? "dark" : "light");
+
+    function setTheme(theme) {
+      root.setAttribute("data-theme", theme);
+      localStorage.setItem("motability-theme", theme);
+      const dark = theme === "dark";
+      themeToggle.setAttribute("aria-pressed", String(dark));
+      themeIcon.textContent = dark ? "☀" : "☾";
+      themeLabel.textContent = dark ? "Light mode" : "Dark mode";
+    }
+
+    setTheme(initialTheme);
+
+    themeToggle.addEventListener("click", () => {
+      setTheme(root.getAttribute("data-theme") === "dark" ? "light" : "dark");
+    });
+
+    const conversations = [
+      {
+        id: "angela",
+        initials: "AD",
+        name: "Angela Diaz",
+        meta: "Live video · Last seen 10:30am",
+        channel: "Video call",
+        timer: "13:02",
+        mode: "Video",
+        status: "On call",
+        note: "Customer is asking for help with the next step in the form.",
+        queue: "Needs a callback after the call.",
+        messages: [
+          { from: "customer", name: "Angela Diaz", time: "10:14", text: "Hi, I’m choosing between a couple of chargers. Could you help me compare them?" },
+          { from: "agent", name: "Jasmine", time: "10:22", text: "Of course — I can check availability, explain the differences, and transfer you if you want a human review." },
+          { from: "customer", name: "Angela Diaz", time: "10:24", text: "Yes, please stay with me while I finish the details." }
+        ]
+      },
+      {
+        id: "peter",
+        initials: "PR",
+        name: "Peter Rock",
+        meta: "Voice call · Last seen 9:40am",
+        channel: "Voice call",
+        timer: "08:17",
+        mode: "Voice",
+        status: "On call",
+        note: "Customer prefers voice support and may need a human handover.",
+        queue: "Waiting on permit update.",
+        messages: [
+          { from: "customer", name: "Peter Rock", time: "09:18", text: "I’d rather talk this through than use the chat." },
+          { from: "agent", name: "Mia", time: "09:21", text: "No problem. I can stay on the line and walk through everything with you." },
+          { from: "customer", name: "Peter Rock", time: "09:24", text: "That would help, thanks." }
+        ]
+      },
+      {
+        id: "jasmine",
+        initials: "JW",
+        name: "Jasmine Welder",
+        meta: "Messages · Last seen yesterday",
+        channel: "Messages",
+        timer: "00:00",
+        mode: "Messages",
+        status: "Awaiting reply",
+        note: "Ask for confirmation on address details and then offer handover.",
+        queue: "Needs a response from the team.",
+        messages: [
+          { from: "customer", name: "Jasmine Welder", time: "Yesterday", text: "Can you tell me what happens after the survey?" },
+          { from: "agent", name: "Leo", time: "Yesterday", text: "I can explain the process and send a summary once the job moves forward." }
+        ]
+      }
+    ];
+
+    let activeConversationId = "angela";
+    let currentFilter = "all";
+
+    const conversationList = document.getElementById("conversationList");
+    const messageThread = document.getElementById("messageThread");
+    const queueList = document.getElementById("queueList");
+    const activeName = document.getElementById("activeName");
+    const activeMeta = document.getElementById("activeMeta");
+    const activeInitials = document.getElementById("activeInitials");
+    const stageAvatar = document.getElementById("stageAvatar");
+    const stageTitle = document.getElementById("stageTitle");
+    const stageSubtitle = document.getElementById("stageSubtitle");
+    const activeChannelLabel = document.getElementById("activeChannelLabel");
+    const callTimer = document.getElementById("callTimer");
+    const callModeLabel = document.getElementById("callModeLabel");
+    const callStatusLabel = document.getElementById("callStatusLabel");
+    const noteCard = document.getElementById("noteCard");
+    const chatSearch = document.getElementById("chatSearch");
+    const statusBanner = document.getElementById("statusBanner");
+    const sendBtn = document.getElementById("sendBtn");
+    const messageInput = document.getElementById("messageInput");
+    const voiceBtn = document.getElementById("voiceBtn");
+    const videoBtn = document.getElementById("videoBtn");
+    const muteBtn = document.getElementById("muteBtn");
+    const pauseBtn = document.getElementById("pauseBtn");
+    const startCallBtn = document.getElementById("startCallBtn");
+    const newMessageBtn = document.getElementById("newMessageBtn");
+    const handoverBtn = document.getElementById("handoverBtn");
+    const handoverInlineBtn = document.getElementById("handoverInlineBtn");
+    const newConversationBtn = document.getElementById("newConversationBtn");
+
+    const showMessage = (text) => {
+      statusBanner.textContent = text;
+      statusBanner.classList.add("is-visible");
+      clearTimeout(showMessage._t);
+      showMessage._t = setTimeout(() => {
+        statusBanner.textContent = "";
+        statusBanner.classList.remove("is-visible");
+      }, 2600);
+    };
+
+    const activeConversation = () => conversations.find(c => c.id === activeConversationId) || conversations[0];
+
+    const renderConversationList = () => {
+      const query = chatSearch.value.trim().toLowerCase();
+
+      const visible = conversations.filter(conv => {
+        const matchesFilter =
+          currentFilter === "all" ||
+          (currentFilter === "live" && conv.mode !== "Messages") ||
+          (currentFilter === "messages" && conv.mode === "Messages") ||
+          (currentFilter === "video" && conv.mode === "Video");
+
+        const matchesQuery =
+          !query ||
+          conv.name.toLowerCase().includes(query) ||
+          conv.note.toLowerCase().includes(query) ||
+          conv.messages.some(m => m.text.toLowerCase().includes(query));
+
+        return matchesFilter && matchesQuery;
+      });
+
+      conversationList.innerHTML = visible.map(conv => `
+        <button class="conversation-item ${conv.id === activeConversationId ? "is-active" : ""}" type="button" data-conv-id="${conv.id}" aria-pressed="${conv.id === activeConversationId}">
+          <span class="avatar">${conv.initials}</span>
+          <span class="conversation-item__meta">
+            <span class="conversation-item__name">${conv.name}</span>
+            <span class="conversation-item__text">${conv.note}</span>
+          </span>
+          <span class="pill pill--${conv.mode === "Video" ? "ready" : conv.mode === "Voice" ? "survey" : "approved"}">${conv.mode}</span>
+        </button>
+      `).join("") || `<div class="empty-state">No conversations match this filter.</div>`;
+    };
+
+    const renderMessages = () => {
+      const conv = activeConversation();
+      messageThread.innerHTML = conv.messages.map(msg => `
+        <article class="message ${msg.from === "customer" ? "message--customer" : "message--agent"}">
+          <div class="message__head">
+            <strong>${msg.name}</strong>
+            <span>${msg.time}</span>
+          </div>
+          <p>${msg.text}</p>
+        </article>
+      `).join("");
+    };
+
+    const renderQueue = () => {
+      const items = conversations
+        .filter(c => c.id !== activeConversationId)
+        .map(c => `
+          <li class="queue-item">
+            <div>
+              <strong>${c.name}</strong>
+              <p>${c.queue}</p>
+            </div>
+            <span class="pill pill--${c.mode === "Video" ? "ready" : c.mode === "Voice" ? "survey" : "approved"}">${c.mode}</span>
+          </li>
+        `);
+
+      queueList.innerHTML = items.join("");
+    };
+
+    const renderActive = () => {
+      const conv = activeConversation();
+      activeName.textContent = conv.name;
+      activeMeta.textContent = conv.meta;
+      activeInitials.textContent = conv.initials;
+      stageAvatar.textContent = conv.initials;
+      stageTitle.textContent = `Connected with ${conv.name}`;
+      stageSubtitle.textContent = conv.note;
+      activeChannelLabel.textContent = conv.channel;
+      callTimer.textContent = conv.timer;
+      callModeLabel.textContent = conv.mode;
+      callStatusLabel.textContent = conv.status;
+      noteCard.textContent = conv.note;
+      renderMessages();
+      renderQueue();
+      renderConversationList();
+    };
+
+    document.getElementById("conversationList").addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-conv-id]");
+      if (!btn) return;
+      activeConversationId = btn.dataset.convId;
+      renderActive();
+      showMessage(`Opened ${activeConversation().name}.`);
+    });
+
+    document.querySelectorAll(".chat-tab").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".chat-tab").forEach(t => {
+          t.classList.remove("is-active");
+          t.setAttribute("aria-pressed", "false");
+        });
+        btn.classList.add("is-active");
+        btn.setAttribute("aria-pressed", "true");
+        currentFilter = btn.dataset.filter;
+        renderConversationList();
+      });
+    });
+
+    const setMode = (mode) => {
+      const conv = activeConversation();
+      conv.mode = mode;
+      conv.channel = `${mode} ${mode === "Messages" ? "" : "call"}`.trim();
+      conv.status = mode === "Messages" ? "Awaiting reply" : "On call";
+      conv.timer = mode === "Messages" ? "00:00" : conv.timer;
+      renderActive();
+      showMessage(`Switched ${conv.name} to ${mode.toLowerCase()} mode.`);
+    };
+
+    voiceBtn.addEventListener("click", () => setMode("Voice"));
+    videoBtn.addEventListener("click", () => setMode("Video"));
+    startCallBtn.addEventListener("click", () => setMode("Video"));
+
+    document.getElementById("muteBtn").addEventListener("click", () => {
+      showMessage("Microphone muted for the current call.");
+    });
+
+    document.getElementById("pauseBtn").addEventListener("click", () => {
+      showMessage("Call paused.");
+    });
+
+    const handover = () => {
+      showMessage("Human handover requested for the current customer.");
+      noteCard.textContent = `${activeConversation().note} Human assessor request sent.`;
+    };
+
+    handoverBtn.addEventListener("click", handover);
+    handoverInlineBtn.addEventListener("click", handover);
+
+    newMessageBtn.addEventListener("click", () => {
+      messageInput.focus();
+      showMessage("Composer ready.");
+    });
+
+    newConversationBtn.addEventListener("click", () => {
+      showMessage("New conversation flow can open here.");
+    });
+
+    sendBtn.addEventListener("click", () => {
+      const text = messageInput.value.trim();
+      if (!text) return;
+
+      activeConversation().messages.push({
+        from: "agent",
+        name: "You",
+        time: "Now",
+        text
+      });
+
+      messageInput.value = "";
+      renderActive();
+      showMessage("Message sent.");
+    });
+
+    messageInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        sendBtn.click();
+      }
+    });
+
+    chatSearch.addEventListener("input", renderConversationList);
+
+    renderActive();
+  </script>
+</body>
+</html>

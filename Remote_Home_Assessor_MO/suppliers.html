@@ -1,0 +1,1696 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EV Charger Installations MVP</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+  :root{
+    --blue:#004B87;
+    --navy:#0A2540;
+    --cream:#F4F1EA;
+    --teal:#008080;
+    --yellow:#FFD100;
+    --coral:#E05A47;
+    --green:#2E8B57;
+
+    --bg:#F4F1EA;
+    --surface:rgba(255,255,255,.78);
+    --surface-strong:#ffffff;
+    --muted:rgba(10,37,64,.68);
+    --text:#0A2540;
+    --border:rgba(10,37,64,.10);
+    --shadow:0 14px 34px rgba(10,37,64,.08);
+    --shadow-soft:0 8px 20px rgba(10,37,64,.06);
+    --ring:0 0 0 4px rgba(255,209,0,.24);
+
+    --r-xl:28px;
+    --r-lg:22px;
+    --r-md:16px;
+    --r-pill:999px;
+    --font:"Plus Jakarta Sans", system-ui, sans-serif;
+    --container:1440px;
+  }
+
+  html[data-theme="dark"]{
+    --bg:#071826;
+    --surface:rgba(16,33,52,.90);
+    --surface-strong:#11253B;
+    --muted:rgba(245,248,252,.76);
+    --text:#F5F8FC;
+    --border:rgba(255,255,255,.10);
+    --shadow:0 18px 44px rgba(0,0,0,.28);
+    --shadow-soft:0 8px 20px rgba(0,0,0,.16);
+    --ring:0 0 0 4px rgba(255,209,0,.22);
+  }
+
+  *{ box-sizing:border-box; }
+  html{
+    scroll-behavior:smooth;
+    -webkit-text-size-adjust:100%;
+  }
+  body{
+    margin:0;
+    min-height:100vh;
+    font-family:var(--font);
+    color:var(--text);
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.46), rgba(255,255,255,0)),
+      var(--bg);
+    text-rendering:optimizeLegibility;
+    -webkit-font-smoothing:antialiased;
+  }
+  html[data-theme="dark"] body{
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,0)),
+      var(--bg);
+  }
+
+  a{ color:inherit; text-decoration:none; }
+  button, input, select, textarea{ font:inherit; }
+  button{ -webkit-tap-highlight-color:transparent; }
+  img{ display:block; max-width:100%; height:auto; }
+
+  .sr-only{
+    position:absolute;
+    width:1px;
+    height:1px;
+    padding:0;
+    margin:-1px;
+    overflow:hidden;
+    clip:rect(0,0,0,0);
+    white-space:nowrap;
+    border:0;
+  }
+
+  .skip-link{
+    position:absolute;
+    left:14px;
+    top:-60px;
+    z-index:1000;
+    padding:12px 16px;
+    border-radius:var(--r-pill);
+    background:var(--navy);
+    color:#fff;
+    font-weight:700;
+    text-decoration:none;
+    transition:top .18s ease, box-shadow .18s ease;
+  }
+  .skip-link:focus{
+    top:14px;
+    box-shadow:var(--ring);
+  }
+
+  .app{
+    width:min(calc(100% - 24px), var(--container));
+    margin:0 auto;
+    padding:20px 0 28px;
+  }
+
+  .topbar{
+    display:grid;
+    grid-template-columns:auto minmax(0,1fr) auto;
+    gap:18px;
+    align-items:center;
+    padding:16px 20px;
+    border-radius:var(--r-xl);
+    background:linear-gradient(180deg, rgba(255,255,255,.78), rgba(255,255,255,.62));
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
+    backdrop-filter:blur(12px);
+  }
+  html[data-theme="dark"] .topbar{
+    background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+    background-color:rgba(8,20,32,.82);
+  }
+
+  .topbar__brand{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    min-width:0;
+  }
+
+  .brand-mark{
+    width:52px;
+    height:52px;
+    border-radius:14px;
+    overflow:hidden;
+    background:rgba(255,255,255,.96);
+    display:grid;
+    place-items:center;
+    flex:0 0 auto;
+    box-shadow:var(--shadow-soft);
+  }
+  .brand-mark img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+
+  .topbar__eyebrow{
+    margin:0;
+    font-size:.82rem;
+    font-weight:800;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--teal);
+  }
+  .topbar__title{
+    margin:4px 0 0;
+    font-size:clamp(1rem, 1.4vw, 1.4rem);
+    line-height:1.1;
+    letter-spacing:-0.02em;
+  }
+
+  .topnav{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    justify-content:center;
+    min-width:0;
+  }
+  .topnav a{
+    padding:10px 14px;
+    border-radius:999px;
+    color:var(--muted);
+    font-weight:700;
+    transition:background .16s ease, color .16s ease, transform .16s ease;
+  }
+  .topnav a:hover,
+  .topnav a:focus-visible,
+  .topnav a[aria-current="page"]{
+    background:rgba(0,75,135,.08);
+    color:var(--blue);
+    transform:translateY(-1px);
+  }
+
+  .topbar__actions{
+    display:flex;
+    gap:10px;
+    align-items:center;
+  }
+
+  .icon-btn,
+  .theme-toggle,
+  .btn,
+  .tab,
+  .field select,
+  .searchbar,
+  .text-link,
+  .row-menu,
+  .user-link,
+  .table-check input,
+  .job-select,
+  .action-link,
+  .chat-tab,
+  .chat-item{
+    transition:background .16s ease, transform .16s ease, box-shadow .16s ease, border-color .16s ease, color .16s ease;
+  }
+
+  .icon-btn{
+    width:44px;
+    height:44px;
+    border:1px solid var(--border);
+    border-radius:14px;
+    background:var(--surface-strong);
+    color:var(--text);
+    cursor:pointer;
+    box-shadow:var(--shadow-soft);
+    display:grid;
+    place-items:center;
+  }
+
+  .theme-toggle{
+    min-height:44px;
+    padding:0 14px;
+    border:1px solid var(--border);
+    border-radius:999px;
+    background:var(--surface-strong);
+    color:var(--text);
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    cursor:pointer;
+    box-shadow:var(--shadow-soft);
+    font-weight:700;
+  }
+
+  .icon-btn:hover,
+  .theme-toggle:hover,
+  .btn:hover,
+  .tab:hover,
+  .row-menu:hover,
+  .user-link:hover,
+  .text-link:hover,
+  .action-link:hover,
+  .chat-tab:hover,
+  .chat-item:hover{
+    transform:translateY(-1px);
+  }
+
+  .icon-btn:focus-visible,
+  .theme-toggle:focus-visible,
+  .btn:focus-visible,
+  .tab:focus-visible,
+  .field select:focus-visible,
+  .searchbar input:focus-visible,
+  .text-link:focus-visible,
+  .row-menu:focus-visible,
+  .user-link:focus-visible,
+  .table-check input:focus-visible,
+  .job-select:focus-visible,
+  .action-link:focus-visible,
+  .chat-tab:focus-visible,
+  .chat-item:focus-visible{
+    outline:none;
+    box-shadow:var(--ring);
+  }
+
+  .page{
+    margin-top:18px;
+  }
+
+  .hero{
+    display:flex;
+    justify-content:space-between;
+    gap:18px;
+    align-items:center;
+    padding:18px 22px;
+    margin-bottom:18px;
+    border:1px solid var(--border);
+    border-radius:var(--r-xl);
+    background:var(--surface);
+    box-shadow:var(--shadow);
+    backdrop-filter:blur(10px);
+  }
+
+  .hero__content{
+    max-width:60ch;
+  }
+
+  .eyebrow{
+    margin:0 0 8px;
+    font-size:.82rem;
+    font-weight:800;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--teal);
+  }
+
+  .hero__content h2,
+  .page-header h2{
+    margin:0;
+    font-size:clamp(1.65rem, 2.6vw, 2.5rem);
+    line-height:1.05;
+    letter-spacing:-0.03em;
+  }
+
+  .hero__content p,
+  .page-header__text{
+    margin:10px 0 0;
+    color:var(--muted);
+    line-height:1.55;
+  }
+
+  .hero__actions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+  }
+
+  .btn{
+    border:1px solid var(--border);
+    border-radius:999px;
+    min-height:44px;
+    padding:0 16px;
+    cursor:pointer;
+    font-weight:800;
+    background:var(--surface-strong);
+    color:var(--text);
+    box-shadow:var(--shadow-soft);
+  }
+  .btn-primary{
+    background:var(--blue);
+    color:#fff;
+    border-color:transparent;
+  }
+  .btn-primary:hover{ background:var(--navy); }
+
+  .btn-ghost{
+    background:var(--surface-strong);
+  }
+
+  .status-banner{
+    min-height:0;
+    margin-bottom:16px;
+    padding:0 18px;
+    border-radius:18px;
+    background:transparent;
+    color:var(--teal);
+    font-weight:700;
+    line-height:1.5;
+  }
+  .status-banner.is-visible{
+    padding:14px 18px;
+    background:rgba(0,128,128,.08);
+    border:1px solid rgba(0,128,128,.14);
+  }
+
+  .kpi-grid{
+    display:grid;
+    grid-template-columns:repeat(4, minmax(0,1fr));
+    gap:16px;
+    margin-bottom:18px;
+  }
+
+  .kpi-card{
+    border:1px solid var(--border);
+    border-radius:22px;
+    background:var(--surface);
+    box-shadow:var(--shadow);
+    backdrop-filter:blur(10px);
+    padding:14px 16px;
+    min-height:118px;
+    display:grid;
+    align-content:space-between;
+    gap:8px;
+  }
+  .kpi-card__label{
+    color:var(--muted);
+    font-size:.9rem;
+    font-weight:700;
+  }
+  .kpi-card__value{
+    font-size:clamp(1.55rem, 2.4vw, 2.2rem);
+    line-height:1;
+    font-weight:800;
+    letter-spacing:-0.03em;
+  }
+  .kpi-card__sub{
+    font-size:.9rem;
+    color:var(--muted);
+  }
+
+  .dashboard{
+    display:grid;
+    grid-template-columns:minmax(0, 1fr) 300px;
+    gap:18px;
+    align-items:start;
+  }
+
+  .board{
+  min-width:0;
+  display:grid;
+  grid-template-columns:repeat(4, minmax(300px, 1fr));
+  gap:18px;
+  overflow-x:auto;
+  padding-bottom:8px;
+  scrollbar-width:thin;
+  }
+
+  .column{
+    border:1px solid var(--border);
+    border-radius:24px;
+    background:var(--surface);
+    box-shadow:var(--shadow);
+    backdrop-filter:blur(10px);
+    min-width:0;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+  }
+
+  .column.is-over{
+    box-shadow:var(--ring), var(--shadow);
+    transform:translateY(-2px);
+  }
+
+  .column__head{
+    padding:16px 16px 14px;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:10px;
+    background:linear-gradient(180deg, rgba(255,255,255,.35), rgba(255,255,255,0));
+  }
+
+  .column__title{
+    margin:0;
+    font-size:1rem;
+    line-height:1.15;
+    font-weight:800;
+    letter-spacing:-0.02em;
+  }
+
+  .column__count{
+    min-height:28px;
+    padding:0 10px;
+    border-radius:999px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    font-size:.82rem;
+    font-weight:800;
+    background:rgba(10,37,64,.06);
+    color:var(--text);
+    flex:0 0 auto;
+  }
+
+  .column__body{
+    padding:14px;
+    display:grid;
+    gap:14px;
+    align-content:start;
+    min-height:240px;
+  }
+
+  .column--survey .column__head{ border-top:4px solid rgba(10,37,64,.20); }
+  .column--paperwork .column__head{ border-top:4px solid var(--yellow); }
+  .column--ready .column__head{ border-top:4px solid var(--blue); }
+  .column--live .column__head{ border-top:4px solid var(--green); }
+
+  .job-card{
+    border:1px solid var(--border);
+    border-radius:16px;
+    background:var(--surface-strong);
+    box-shadow:var(--shadow-soft);
+    padding:14px;
+    display:grid;
+    gap:8px;
+    min-width:0;
+    cursor:grab;
+  }
+
+  .job-card:active{
+    cursor:grabbing;
+  }
+
+  .job-card.is-dragging{
+    opacity:.55;
+    transform:scale(.99);
+  }
+
+  .job-card__top{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    align-items:center;
+  }
+
+  .job-card__name{
+    margin:0;
+    font-size:.98rem;
+    line-height:1.15;
+    font-weight:800;
+    letter-spacing:-0.02em;
+  }
+
+.job-card__address{
+    margin:0;
+    color:var(--muted);
+    line-height:1.45;
+    font-size:.92rem;
+  }
+
+.job-card__meta{
+    margin:0;
+    color:var(--muted);
+    line-height:1.4;
+    font-size:.9rem;
+  }
+
+.job-card__meta strong{
+    color:var(--text);
+  }
+
+  .pill{
+    display:inline-flex;
+    align-items:center;
+    min-height:26px;
+    padding:0 10px;
+    border-radius:999px;
+    font-size:.76rem;
+    font-weight:800;
+    white-space:nowrap;
+    flex:0 0 auto;
+  }
+  
+  .pill--pending{
+    background:rgba(255,209,0,.18);
+    color:#8A6A00;
+  }
+  .pill--approved{
+    background:rgba(0,128,128,.12);
+    color:var(--teal);
+  }
+  .pill--survey{
+    background:rgba(10,37,64,.08);
+    color:var(--text);
+  }
+  .pill--paperwork{
+    background:rgba(255,209,0,.18);
+    color:#8A6A00;
+  }
+  .pill--ready{
+    background:rgba(0,75,135,.10);
+    color:var(--blue);
+  }
+  .pill--live{
+    background:rgba(46,139,87,.12);
+    color:var(--green);
+  }
+
+  .job-card__controls{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+
+  .job-control{
+    display:grid;
+    gap:5px;
+  }
+
+.job-control span{
+    font-size:.78rem;
+    color:var(--muted);
+    font-weight:700;
+  }
+
+.job-select{
+    width:100%;
+    min-height:40px;
+    border:1px solid var(--border);
+    border-radius:12px;
+    background:var(--surface-strong);
+    color:var(--text);
+    padding:0 10px;
+    box-shadow:var(--shadow-soft);
+  }
+
+  .sidebar{
+    display:grid;
+    gap:18px;
+    position:sticky;
+    top:18px;
+    min-width:0;
+  }
+
+  .panel{
+    border:1px solid var(--border);
+    border-radius:24px;
+    background:var(--surface);
+    box-shadow:var(--shadow);
+    backdrop-filter:blur(10px);
+    overflow:hidden;
+  }
+
+  .panel__head{
+    padding:18px 18px 14px;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:12px;
+  }
+
+  .panel__head h3{
+    margin:0;
+    font-size:1.08rem;
+    line-height:1.15;
+  }
+
+  .panel__head p{
+    margin:6px 0 0;
+    color:var(--muted);
+    line-height:1.45;
+    font-size:.92rem;
+  }
+
+  .panel__body{
+    padding:16px 18px 18px;
+  }
+
+  .schedule-list{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:grid;
+    gap:12px;
+  }
+
+  .schedule-item{
+    border:1px solid var(--border);
+    border-radius:14px;
+    background:var(--surface-strong);
+    box-shadow:var(--shadow-soft);
+    padding:12px;
+    display:grid;
+    gap:6px;
+  }
+
+  .schedule-item__top{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    align-items:flex-start;
+  }
+
+  .schedule-item__name{
+    font-weight:800;
+    margin:0;
+  }
+
+  .schedule-item__installer,
+  .schedule-item__date{
+    margin:0;
+    color:var(--muted);
+    font-size:.92rem;
+  }
+
+  .inventory-table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:.94rem;
+  }
+
+  .inventory-table th,
+  .inventory-table td{
+    text-align:left;
+    padding:10px 0;
+    border-bottom:1px solid rgba(10,37,64,.06);
+    vertical-align:middle;
+  }
+
+  .inventory-table th{
+    color:var(--muted);
+    font-size:.84rem;
+    font-weight:800;
+    padding-top:0;
+  }
+
+  .inventory-table td:last-child,
+  .inventory-table th:last-child{
+    text-align:right;
+  }
+
+  .stock-low{
+    color:var(--coral);
+    font-weight:800;
+  }
+  .stock-ok{
+    color:var(--green);
+    font-weight:800;
+  }
+
+  .panel__actions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:14px;
+  }
+
+  .btn-block{ width:100%; }
+
+  .action-link{
+    border:0;
+    background:transparent;
+    color:var(--blue);
+    font-weight:800;
+    cursor:pointer;
+    padding:0;
+  }
+
+  dialog{
+    border:0;
+    border-radius:24px;
+    padding:0;
+    width:min(760px, calc(100% - 24px));
+    box-shadow:var(--shadow);
+    background:var(--surface-strong);
+    color:var(--text);
+  }
+  dialog::backdrop{
+    background:rgba(10,37,64,.42);
+    backdrop-filter:blur(4px);
+  }
+
+  .modal{
+    display:grid;
+    gap:0;
+  }
+
+  .modal__head{
+    padding:18px 18px 16px;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:12px;
+  }
+
+  .modal__head h3{
+    margin:0;
+    font-size:1.2rem;
+    line-height:1.15;
+  }
+
+  .modal__head p{
+    margin:6px 0 0;
+    color:var(--muted);
+    font-size:.92rem;
+    line-height:1.45;
+  }
+
+  .modal__close{
+    width:40px;
+    height:40px;
+    border-radius:14px;
+    border:1px solid var(--border);
+    background:var(--surface);
+    color:var(--text);
+    cursor:pointer;
+    box-shadow:var(--shadow-soft);
+    flex:0 0 auto;
+  }
+
+  .modal__body{
+    padding:18px;
+    display:grid;
+    gap:16px;
+  }
+
+  .form-grid{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:14px;
+  }
+
+  .field{
+    display:grid;
+    gap:8px;
+  }
+
+  .field label{
+    font-size:.9rem;
+    font-weight:700;
+    color:var(--text);
+  }
+
+  .field input,
+  .field select{
+    width:100%;
+    min-height:46px;
+    border:1px solid var(--border);
+    border-radius:14px;
+    background:var(--surface-strong);
+    color:var(--text);
+    padding:0 14px;
+    box-shadow:var(--shadow-soft);
+  }
+
+  .field textarea{
+    width:100%;
+    min-height:92px;
+    resize:vertical;
+    border:1px solid var(--border);
+    border-radius:14px;
+    background:var(--surface-strong);
+    color:var(--text);
+    padding:12px 14px;
+    box-shadow:var(--shadow-soft);
+    font:inherit;
+  }
+
+  .form-actions,
+  .modal__footer{
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+
+  .inventory-modal .modal__body{
+    gap:12px;
+  }
+
+  .inventory-modal__table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:.95rem;
+  }
+
+  .inventory-modal__table th,
+  .inventory-modal__table td{
+    padding:12px 0;
+    border-bottom:1px solid rgba(10,37,64,.06);
+    text-align:left;
+  }
+
+  .inventory-modal__table th:last-child,
+  .inventory-modal__table td:last-child{
+    text-align:right;
+  }
+
+  .empty-state{
+    border:1px dashed var(--border);
+    border-radius:16px;
+    padding:14px;
+    color:var(--muted);
+    background:rgba(255,255,255,.25);
+  }
+
+  @media (max-width: 1280px){
+    .topbar{
+      grid-template-columns:1fr;
+      justify-items:stretch;
+    }
+    .topnav{
+      justify-content:flex-start;
+    }
+    .topbar__actions{
+      justify-content:flex-start;
+    }
+
+    .hero{
+      flex-direction:column;
+      align-items:flex-start;
+    }
+
+    .dashboard{
+      grid-template-columns:1fr;
+    }
+
+    .sidebar{
+      position:static;
+    }
+
+    .kpi-grid{
+      grid-template-columns:repeat(2, minmax(0,1fr));
+    }
+  }
+
+  @media (max-width: 760px){
+    .app{
+      width:min(calc(100% - 14px), var(--container));
+      padding:12px 0 18px;
+    }
+
+    .topbar,
+    .hero,
+    .kpi-card,
+    .column,
+    .panel{
+      border-radius:20px;
+    }
+
+    .topbar{
+      padding:14px;
+    }
+
+    .job-card__controls{
+      grid-template-columns:1fr;
+    }
+
+    .hero{
+      padding:16px;
+    }
+
+    .hero__meta{
+      grid-template-columns:1fr;
+    }
+
+    .kpi-grid{
+      grid-template-columns:1fr;
+    }
+
+    .board{
+      grid-template-columns:1fr;
+      overflow:visible;
+      padding-bottom:0;
+    }
+
+    .hero__actions{
+      justify-content:flex-start;
+    }
+
+    .form-grid{
+      grid-template-columns:1fr;
+    }
+  }
+
+  /* Drag helpers */
+  .column__body.is-droppable{
+    background:rgba(0,75,135,.04);
+  }
+
+  html[data-theme="dark"] .column__body.is-droppable{
+    background:rgba(255,255,255,.03);
+  }
+</style>
+</head>
+<body>
+ <!-- <a class="skip-link" href="#main">Skip to content</a> -->
+    <header class="topbar">
+    <div class="topbar__brand">
+        <a class="brand-mark" href="index.html" aria-label="Home">
+            <img src="logo.jpg" alt="Motability Operations" href="index.html"/>
+        </a>
+        <div>
+        <p class="topbar__eyebrow">Motability Scheme</p>
+        <h1 class="topbar__title">Remote Home Assessor Portal</h1>
+        </div>
+    </div>
+
+    <nav class="topnav" aria-label="Primary">
+        <a href="users-profiles.html">Users</a>
+        <a href="ai-chatbot-dashboard.html">AI</a>
+        <a href="communications.html">Communications</a>
+        <a href="suppliers.html" aria-current="page">Suppliers</a>
+    </nav>
+    </header>
+
+  <div class="app">
+    <header class="topbar">
+      <div class="topbar__brand">
+        <a class="brand-mark" href="#" aria-label="Home">
+          <span style="font-weight:800;color:var(--blue);font-size:1rem;">EV</span>
+        </a>
+        <div>
+          <p class="topbar__eyebrow">Installations</p>
+          <h1 class="topbar__title">EV Charger Dashboard</h1>
+        </div>
+      </div>
+
+      <nav class="topnav" aria-label="Primary">
+        <a href="#board" aria-current="page">Jobs</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#inventory">Inventory</a>
+        <a href="#installers">Installers</a>
+      </nav>
+
+      <div class="topbar__actions">
+        <button class="icon-btn" type="button" id="searchBtn" aria-label="Search jobs">
+          <span aria-hidden="true">⌕</span>
+        </button>
+        <button class="theme-toggle" type="button" id="themeToggle" aria-pressed="false">
+          <span class="theme-toggle__icon" aria-hidden="true">☾</span>
+          <span class="theme-toggle__label">Dark mode</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="main" class="page">
+      <section class="hero" aria-label="Dashboard overview">
+        <div class="hero__content">
+          <p class="eyebrow">MVP dashboard</p>
+          <h2>Manage EV charger installations from survey to live handover.</h2>
+          <p>
+            Track jobs, assign installers, monitor permit flow, and keep an eye on warehouse stock in one clean workspace.
+          </p>
+        </div>
+
+        <div class="hero__actions">
+          <button class="btn btn-primary" type="button" id="newJobBtn">+ New Job</button>
+          <button class="btn btn-ghost" type="button" id="inventoryBtn">View Inventory</button>
+        </div>
+      </section>
+
+      <div class="status-banner" id="statusBanner" aria-live="polite"></div>
+
+      <section class="kpi-grid" aria-label="Key metrics">
+        <article class="kpi-card">
+          <span class="kpi-card__label">Total Active Jobs</span>
+          <span class="kpi-card__value" id="kpiActive">0</span>
+          <span class="kpi-card__sub">Jobs not yet certified live</span>
+        </article>
+
+        <article class="kpi-card">
+          <span class="kpi-card__label">Waiting on Permits</span>
+          <span class="kpi-card__value" id="kpiPermits">0</span>
+          <span class="kpi-card__sub">Paperwork still pending</span>
+        </article>
+
+        <article class="kpi-card">
+          <span class="kpi-card__label">Booked This Week</span>
+          <span class="kpi-card__value" id="kpiBooked">0</span>
+          <span class="kpi-card__sub">Scheduled for the current week</span>
+        </article>
+
+        <article class="kpi-card">
+          <span class="kpi-card__label">Done This Month</span>
+          <span class="kpi-card__value" id="kpiDone">0</span>
+          <span class="kpi-card__sub">Certified &amp; live this month</span>
+        </article>
+      </section>
+
+      <section class="dashboard">
+        <div class="board" id="board" aria-label="Job board"></div>
+
+        <aside class="sidebar">
+          <section class="panel" id="schedule" aria-label="Today's schedule">
+            <div class="panel__head">
+              <div>
+                <h3>Today’s Schedule</h3>
+                <p>Jobs booked for today and their assigned electrician.</p>
+              </div>
+            </div>
+            <div class="panel__body">
+              <ul class="schedule-list" id="scheduleList"></ul>
+            </div>
+          </section>
+
+          <section class="panel" id="inventory" aria-label="Inventory">
+            <div class="panel__head">
+              <div>
+                <h3>Inventory</h3>
+                <p>Current warehouse hardware counts.</p>
+              </div>
+              <button class="action-link" type="button" id="openInventoryModal">Open full view</button>
+            </div>
+            <div class="panel__body">
+              <table class="inventory-table" aria-label="Inventory summary">
+                <thead>
+                  <tr>
+                    <th>Item</th>
+                    <th>Stock</th>
+                  </tr>
+                </thead>
+                <tbody id="inventorySummary"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="panel" id="installers" aria-label="Installers">
+            <div class="panel__head">
+              <div>
+                <h3>Installers</h3>
+                <p>Availability overview for assignment.</p>
+              </div>
+            </div>
+            <div class="panel__body">
+              <table class="inventory-table" aria-label="Installer summary">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="installerSummary"></tbody>
+              </table>
+            </div>
+          </section>
+        </aside>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="newJobModal">
+    <form class="modal" id="newJobForm">
+      <div class="modal__head">
+        <div>
+          <h3>New Job</h3>
+          <p>Create a new installation record. It will start in Survey Needed.</p>
+        </div>
+        <button class="modal__close" type="button" data-close-dialog aria-label="Close">×</button>
+      </div>
+
+      <div class="modal__body">
+        <div class="form-grid">
+          <div class="field">
+            <label for="customer_name">Customer name</label>
+            <input id="customer_name" name="customer_name" type="text" required placeholder="e.g. Priya Patel" />
+          </div>
+
+          <div class="field">
+            <label for="scheduled_date">Scheduled date</label>
+            <input id="scheduled_date" name="scheduled_date" type="date" required />
+          </div>
+
+          <div class="field" style="grid-column:1 / -1;">
+            <label for="address">Address</label>
+            <input id="address" name="address" type="text" required placeholder="e.g. 14 Green Lane, Leeds" />
+          </div>
+
+          <div class="field">
+            <label for="charger_model">Charger model</label>
+            <select id="charger_model" name="charger_model" required></select>
+          </div>
+
+          <div class="field">
+            <label for="assigned_installer_id">Assigned installer</label>
+            <select id="assigned_installer_id" name="assigned_installer_id" required></select>
+          </div>
+
+          <div class="field">
+            <label for="permit_status">Permit status</label>
+            <select id="permit_status" name="permit_status" required>
+              <option value="Pending">Pending</option>
+              <option value="Approved">Approved</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="notes">Notes</label>
+            <textarea id="notes" name="notes" placeholder="Optional notes for the team"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal__footer" style="padding:0 20px 20px;">
+        <button class="btn btn-ghost" type="button" data-close-dialog>Cancel</button>
+        <button class="btn btn-primary" type="submit">Create Job</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="inventoryModal" class="inventory-modal">
+    <div class="modal">
+      <div class="modal__head">
+        <div>
+          <h3>Warehouse Inventory</h3>
+          <p>Live stock counts for charger hardware and related items.</p>
+        </div>
+        <button class="modal__close" type="button" data-close-dialog aria-label="Close">×</button>
+      </div>
+
+      <div class="modal__body">
+        <table class="inventory-modal__table" aria-label="Inventory details">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Stock</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="inventoryModalBody"></tbody>
+        </table>
+
+        <div class="empty-state">
+          Jobs moved into <strong>Certified &amp; Live</strong> automatically reduce the matching charger model stock by 1.
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    const STORAGE_KEY = "ev-installations-dashboard-state";
+    const themeKey = "ev-installations-theme";
+
+    const STAGES = ["Survey", "Paperwork", "Ready", "Live"];
+    const STAGE_META = {
+      Survey: { label: "Survey Needed", pill: "survey", accent: "survey" },
+      Paperwork: { label: "Paperwork & Permits", pill: "paperwork", accent: "paperwork" },
+      Ready: { label: "Ready to Install", pill: "ready", accent: "ready" },
+      Live: { label: "Certified & Live", pill: "live", accent: "live" },
+    };
+
+    const today = new Date();
+    const pad = n => String(n).padStart(2, "0");
+    const toISODate = (d) => {
+      const x = new Date(d);
+      x.setHours(0,0,0,0);
+      return `${x.getFullYear()}-${pad(x.getMonth()+1)}-${pad(x.getDate())}`;
+    };
+    const sameDay = (a, b) => toISODate(a) === toISODate(b);
+    const sameMonth = (a, b) => {
+      const da = new Date(a), db = new Date(b);
+      return da.getFullYear() === db.getFullYear() && da.getMonth() === db.getMonth();
+    };
+    const startOfWeek = (d) => {
+      const x = new Date(d);
+      const day = x.getDay() || 7;
+      if (day !== 1) x.setDate(x.getDate() - (day - 1));
+      x.setHours(0,0,0,0);
+      return x;
+    };
+    const endOfWeek = (d) => {
+      const x = startOfWeek(d);
+      x.setDate(x.getDate() + 6);
+      x.setHours(23,59,59,999);
+      return x;
+    };
+    const fmtDate = (d) => new Intl.DateTimeFormat(undefined, { month:"short", day:"numeric", year:"numeric" }).format(new Date(d));
+    const fmtShortDate = (d) => new Intl.DateTimeFormat(undefined, { month:"short", day:"numeric" }).format(new Date(d));
+
+    const seedState = () => ({
+      jobs: [
+        { id:"J-1001", customer_name:"Priya Patel", address:"14 Green Lane, Leeds", charger_model:"Ohme Home Pro", assigned_installer_id:"I-1", stage:"Survey", permit_status:"Pending", created_at:toISODate(today), scheduled_date:toISODate(today) },
+        { id:"J-1002", customer_name:"Daniel Reed", address:"88 Kingston Road, Manchester", charger_model:"Wallbox Pulsar Max", assigned_installer_id:"I-2", stage:"Paperwork", permit_status:"Pending", created_at:toISODate(today), scheduled_date:toISODate(new Date(today.getTime() + 86400000)) },
+        { id:"J-1003", customer_name:"Hannah Smith", address:"27 Oak Avenue, Bristol", charger_model:"Zaptec Go", assigned_installer_id:"I-3", stage:"Ready", permit_status:"Approved", created_at:toISODate(today), scheduled_date:toISODate(new Date(today.getTime() + 2 * 86400000)) },
+        { id:"J-1004", customer_name:"Martin Lewis", address:"9 River Walk, Birmingham", charger_model:"Project EV Pro", assigned_installer_id:"I-4", stage:"Live", permit_status:"Approved", created_at:toISODate(new Date(today.getTime() - 14 * 86400000)), scheduled_date:toISODate(today) },
+        { id:"J-1005", customer_name:"Sophie Turner", address:"41 Station Road, Liverpool", charger_model:"Ohme Home Pro", assigned_installer_id:"I-1", stage:"Paperwork", permit_status:"Approved", created_at:toISODate(new Date(today.getTime() - 5 * 86400000)), scheduled_date:toISODate(today) },
+        { id:"J-1006", customer_name:"Ethan Wright", address:"7 Hill Street, Cardiff", charger_model:"Wallbox Pulsar Max", assigned_installer_id:"", stage:"Survey", permit_status:"Pending", created_at:toISODate(new Date(today.getTime() - 7 * 86400000)), scheduled_date:toISODate(new Date(today.getTime() + 4 * 86400000)) }
+      ],
+      installers: [
+        { id:"I-1", name:"Ava Green", phone:"07123 450001", availability:true },
+        { id:"I-2", name:"Noah Brown", phone:"07123 450002", availability:true },
+        { id:"I-3", name:"Mia Clark", phone:"07123 450003", availability:false },
+        { id:"I-4", name:"Leo Evans", phone:"07123 450004", availability:true }
+      ],
+      inventory: [
+        { id:"INV-1", item_name:"Ohme Home Pro", stock_count:8 },
+        { id:"INV-2", item_name:"Wallbox Pulsar Max", stock_count:11 },
+        { id:"INV-3", item_name:"Zaptec Go", stock_count:6 },
+        { id:"INV-4", item_name:"Project EV Pro", stock_count:4 },
+        { id:"INV-5", item_name:"Install Kit", stock_count:22 }
+      ],
+      liveAppliedJobIds: []
+    });
+
+    const loadState = () => {
+      try{
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if(!raw) return seedState();
+        const parsed = JSON.parse(raw);
+        return {
+          ...seedState(),
+          ...parsed,
+          jobs: Array.isArray(parsed.jobs) ? parsed.jobs : seedState().jobs,
+          installers: Array.isArray(parsed.installers) ? parsed.installers : seedState().installers,
+          inventory: Array.isArray(parsed.inventory) ? parsed.inventory : seedState().inventory,
+          liveAppliedJobIds: Array.isArray(parsed.liveAppliedJobIds) ? parsed.liveAppliedJobIds : []
+        };
+      }catch{
+        return seedState();
+      }
+    };
+
+    let state = loadState();
+
+    const els = {
+      themeToggle: document.getElementById("themeToggle"),
+      themeIcon: document.querySelector(".theme-toggle__icon"),
+      themeLabel: document.querySelector(".theme-toggle__label"),
+      board: document.getElementById("board"),
+      scheduleList: document.getElementById("scheduleList"),
+      inventorySummary: document.getElementById("inventorySummary"),
+      inventoryModalBody: document.getElementById("inventoryModalBody"),
+      installerSummary: document.getElementById("installerSummary"),
+      statusBanner: document.getElementById("statusBanner"),
+      kpiActive: document.getElementById("kpiActive"),
+      kpiPermits: document.getElementById("kpiPermits"),
+      kpiBooked: document.getElementById("kpiBooked"),
+      kpiDone: document.getElementById("kpiDone"),
+      newJobBtn: document.getElementById("newJobBtn"),
+      inventoryBtn: document.getElementById("inventoryBtn"),
+      openInventoryModal: document.getElementById("openInventoryModal"),
+      searchBtn: document.getElementById("searchBtn"),
+      newJobModal: document.getElementById("newJobModal"),
+      inventoryModal: document.getElementById("inventoryModal"),
+      newJobForm: document.getElementById("newJobForm"),
+      chargerModelSelect: document.getElementById("charger_model"),
+      installerSelect: document.getElementById("assigned_installer_id"),
+      scheduledDateInput: document.getElementById("scheduled_date"),
+    };
+
+    /*extra*/
+    let draggedJobId = null;
+
+        const clearDropStates = () => {
+        document.querySelectorAll(".column.is-over").forEach(col => col.classList.remove("is-over"));
+        document.querySelectorAll(".column__body.is-droppable").forEach(body => body.classList.remove("is-droppable"));
+        };
+
+        els.board.addEventListener("dragstart", (e) => {
+        const card = e.target.closest(".job-card[data-job-id]");
+        if (!card) return;
+
+        draggedJobId = card.dataset.jobId;
+        card.classList.add("is-dragging");
+        e.dataTransfer.effectAllowed = "move";
+        e.dataTransfer.setData("text/plain", draggedJobId);
+        });
+
+        els.board.addEventListener("dragend", (e) => {
+        const card = e.target.closest(".job-card[data-job-id]");
+        if (card) card.classList.remove("is-dragging");
+        draggedJobId = null;
+        clearDropStates();
+        });
+
+        els.board.addEventListener("dragover", (e) => {
+        const column = e.target.closest(".column[data-stage]");
+        if (!column) return;
+
+        e.preventDefault();
+        column.classList.add("is-over");
+        const body = column.querySelector(".column__body");
+        if (body) body.classList.add("is-droppable");
+        });
+
+        els.board.addEventListener("dragleave", (e) => {
+        const column = e.target.closest(".column[data-stage]");
+        if (!column) return;
+
+        if (!column.contains(e.relatedTarget)) {
+            column.classList.remove("is-over");
+            const body = column.querySelector(".column__body");
+            if (body) body.classList.remove("is-droppable");
+        }
+        });
+
+        els.board.addEventListener("drop", (e) => {
+        const column = e.target.closest(".column[data-stage]");
+        if (!column) return;
+
+        e.preventDefault();
+
+        const jobId = draggedJobId || e.dataTransfer.getData("text/plain");
+        const targetStage = column.dataset.stage;
+
+        clearDropStates();
+
+        if (jobId && targetStage) {
+            updateJobStage(jobId, targetStage);
+        }
+        });
+    /*extra*/
+
+    const saveState = () => localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+
+    const showMessage = (text) => {
+      els.statusBanner.textContent = text;
+      els.statusBanner.classList.add("is-visible");
+      clearTimeout(showMessage._t);
+      showMessage._t = setTimeout(() => {
+        els.statusBanner.textContent = "";
+        els.statusBanner.classList.remove("is-visible");
+      }, 2800);
+    };
+
+    const getInstallerName = (id) => state.installers.find(i => i.id === id)?.name || "Unassigned";
+
+    const getInventoryItem = (itemName) => state.inventory.find(i => i.item_name === itemName);
+
+    const adjustInventoryForLive = (job, direction) => {
+      const inventoryItem = getInventoryItem(job.charger_model);
+      if(!inventoryItem) return;
+
+      if(direction === -1){
+        inventoryItem.stock_count = Math.max(0, inventoryItem.stock_count - 1);
+      }else if(direction === 1){
+        inventoryItem.stock_count += 1;
+      }
+    };
+
+    const updateJobStage = (jobId, nextStage) => {
+      const job = state.jobs.find(j => j.id === jobId);
+      if(!job || job.stage === nextStage) return;
+
+      const prevStage = job.stage;
+      job.stage = nextStage;
+
+      const wasLiveApplied = state.liveAppliedJobIds.includes(job.id);
+
+      if(prevStage !== "Live" && nextStage === "Live"){
+        adjustInventoryForLive(job, -1);
+        if(!wasLiveApplied) state.liveAppliedJobIds.push(job.id);
+        showMessage(`Moved ${job.customer_name} to Certified & Live. Inventory updated.`);
+      }else if(prevStage === "Live" && nextStage !== "Live"){
+        if(wasLiveApplied) adjustInventoryForLive(job, 1);
+        state.liveAppliedJobIds = state.liveAppliedJobIds.filter(id => id !== job.id);
+        showMessage(`Moved ${job.customer_name} out of Certified & Live.`);
+      }else{
+        showMessage(`Updated ${job.customer_name} to ${STAGE_META[nextStage].label}.`);
+      }
+
+      saveState();
+      render();
+    };
+
+    const updateJobInstaller = (jobId, installerId) => {
+      const job = state.jobs.find(j => j.id === jobId);
+      if(!job) return;
+      job.assigned_installer_id = installerId;
+      saveState();
+      render(false);
+      showMessage(`Assigned ${job.customer_name} to ${getInstallerName(installerId)}.`);
+    };
+
+    const renderKpis = () => {
+      const activeJobs = state.jobs.filter(j => j.stage !== "Live").length;
+      const waitingPermits = state.jobs.filter(j => j.stage === "Paperwork" && j.permit_status === "Pending").length;
+      const bookedThisWeek = state.jobs.filter(j => {
+        const s = new Date(j.scheduled_date);
+        return s >= startOfWeek(today) && s <= endOfWeek(today);
+      }).length;
+      const doneThisMonth = state.jobs.filter(j => j.stage === "Live" && sameMonth(j.scheduled_date, today)).length;
+
+      els.kpiActive.textContent = activeJobs;
+      els.kpiPermits.textContent = waitingPermits;
+      els.kpiBooked.textContent = bookedThisWeek;
+      els.kpiDone.textContent = doneThisMonth;
+    };
+
+    const jobCardTemplate = (job) => {
+      const stageMeta = STAGE_META[job.stage];
+      const permitClass = job.permit_status === "Approved" ? "pill--approved" : "pill--pending";
+
+      const installerOptions = [
+        `<option value="">Unassigned</option>`,
+        ...state.installers.map(installer => {
+          const avail = installer.availability ? "Available" : "Unavailable";
+          const selected = installer.id === job.assigned_installer_id ? "selected" : "";
+          return `<option value="${installer.id}" ${selected}>${installer.name} — ${avail}</option>`;
+        })
+      ].join("");
+
+      return `
+        <article class="job-card" draggable="true" data-job-id="${job.id}" aria-label="${job.customer_name}">
+          <div class="job-card__top">
+            <span class="pill ${permitClass}">Permit: ${job.permit_status}</span>
+            <span class="pill pill--${stageMeta.pill}">${stageMeta.label}</span>
+          </div>
+
+          <div>
+            <h4 class="job-card__name">${job.customer_name}</h4>
+            <p class="job-card__address">${job.address}</p>
+          </div>
+
+          <p class="job-card__meta"><strong>Charger:</strong> ${job.charger_model}</p>
+          <p class="job-card__meta"><strong>Scheduled:</strong> ${fmtDate(job.scheduled_date)}</p>
+
+          <div class="job-card__controls">
+            <label class="job-control">
+              <span>Stage</span>
+              <select class="job-select" data-stage-select data-job-id="${job.id}" aria-label="Update stage for ${job.customer_name}">
+                ${STAGES.map(stage => `<option value="${stage}" ${stage === job.stage ? "selected" : ""}>${STAGE_META[stage].label}</option>`).join("")}
+              </select>
+            </label>
+
+            <label class="job-control">
+              <span>Assign Installer</span>
+              <select class="job-select" data-installer-select data-job-id="${job.id}" aria-label="Assign installer for ${job.customer_name}">
+                ${installerOptions}
+              </select>
+            </label>
+          </div>
+        </article>
+      `;
+    };
+
+    const renderBoard = () => {
+      els.board.innerHTML = STAGES.map(stage => {
+        const jobs = state.jobs
+          .filter(j => j.stage === stage)
+          .sort((a, b) => new Date(a.scheduled_date) - new Date(b.scheduled_date));
+
+        return `
+          <section class="column column--${stage.toLowerCase()}" data-stage="${stage}" aria-label="${STAGE_META[stage].label}">            <div class="column__head">
+              <div>
+                <h3 class="column__title">${STAGE_META[stage].label}</h3>
+              </div>
+              <span class="column__count">${jobs.length}</span>
+            </div>
+            <div class="column__body">
+              ${jobs.length ? jobs.map(jobCardTemplate).join("") : `<div class="empty-state">No jobs in this stage.</div>`}
+            </div>
+          </section>
+        `;
+      }).join("");
+    };
+
+    const renderSchedule = () => {
+      const todaysJobs = state.jobs
+        .filter(job => sameDay(job.scheduled_date, today))
+        .sort((a, b) => a.customer_name.localeCompare(b.customer_name));
+
+      els.scheduleList.innerHTML = todaysJobs.length ? todaysJobs.map(job => `
+        <li class="schedule-item">
+          <div class="schedule-item__top">
+            <p class="schedule-item__name">${job.customer_name}</p>
+            <span class="pill pill--${STAGE_META[job.stage].pill}">${STAGE_META[job.stage].label}</span>
+          </div>
+          <p class="schedule-item__installer">${getInstallerName(job.assigned_installer_id)}</p>
+          <p class="schedule-item__date">${job.address}</p>
+        </li>
+      `).join("") : `<li class="empty-state">No jobs are scheduled for today.</li>`;
+    };
+
+    const renderInventory = () => {
+      const rows = state.inventory.map(item => {
+        const cls = item.stock_count <= 3 ? "stock-low" : "stock-ok";
+        return `<tr>
+          <td>${item.item_name}</td>
+          <td class="${cls}">${item.stock_count}</td>
+        </tr>`;
+      }).join("");
+
+      els.inventorySummary.innerHTML = rows;
+      els.inventoryModalBody.innerHTML = state.inventory.map(item => {
+        const cls = item.stock_count <= 3 ? "stock-low" : "stock-ok";
+        const status = item.stock_count <= 3 ? "Low" : "Healthy";
+        return `<tr>
+          <td>${item.item_name}</td>
+          <td>${item.stock_count}</td>
+          <td class="${cls}">${status}</td>
+        </tr>`;
+      }).join("");
+    };
+
+    const renderInstallers = () => {
+      els.installerSummary.innerHTML = state.installers.map(installer => `
+        <tr>
+          <td>${installer.name}</td>
+          <td class="${installer.availability ? "stock-ok" : "stock-low"}">${installer.availability ? "Available" : "Busy"}</td>
+        </tr>
+      `).join("");
+    };
+
+    const renderNewJobModalOptions = () => {
+      els.chargerModelSelect.innerHTML = state.inventory
+        .filter(item => item.item_name !== "Install Kit")
+        .map(item => `<option value="${item.item_name}">${item.item_name}</option>`)
+        .join("");
+
+      els.installerSelect.innerHTML = [
+        `<option value="">Unassigned</option>`,
+        ...state.installers.map(installer => `<option value="${installer.id}">${installer.name} — ${installer.availability ? "Available" : "Unavailable"}</option>`)
+      ].join("");
+
+      els.scheduledDateInput.value = toISODate(new Date(Date.now() + 86400000));
+    };
+
+    const render = (announce = true) => {
+      renderKpis();
+      renderBoard();
+      renderSchedule();
+      renderInventory();
+      renderInstallers();
+      renderNewJobModalOptions();
+      if(announce) saveState();
+    };
+
+    const openDialog = (dialog) => {
+      if(typeof dialog.showModal === "function") dialog.showModal();
+      else dialog.setAttribute("open", "");
+    };
+
+    const closeDialog = (dialog) => {
+      if(typeof dialog.close === "function") dialog.close();
+      else dialog.removeAttribute("open");
+    };
+
+    els.newJobBtn.addEventListener("click", () => {
+      els.newJobForm.reset();
+      renderNewJobModalOptions();
+      openDialog(els.newJobModal);
+    });
+
+    els.inventoryBtn.addEventListener("click", () => openDialog(els.inventoryModal));
+    els.openInventoryModal.addEventListener("click", () => openDialog(els.inventoryModal));
+
+    document.querySelectorAll("[data-close-dialog]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const dialog = btn.closest("dialog");
+        if(dialog) closeDialog(dialog);
+      });
+    });
+
+    els.newJobForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const form = new FormData(els.newJobForm);
+      const customer_name = String(form.get("customer_name") || "").trim();
+      const address = String(form.get("address") || "").trim();
+      const charger_model = String(form.get("charger_model") || "").trim();
+      const assigned_installer_id = String(form.get("assigned_installer_id") || "");
+      const permit_status = String(form.get("permit_status") || "Pending");
+      const scheduled_date = String(form.get("scheduled_date") || toISODate(new Date()));
+
+      if(!customer_name || !address || !charger_model){
+        showMessage("Please complete the required fields.");
+        return;
+      }
+
+      const newJob = {
+        id: `J-${Date.now().toString().slice(-6)}`,
+        customer_name,
+        address,
+        charger_model,
+        assigned_installer_id,
+        stage: "Survey",
+        permit_status,
+        created_at: toISODate(new Date()),
+        scheduled_date
+      };
+
+      state.jobs.unshift(newJob);
+      saveState();
+      render(false);
+      closeDialog(els.newJobModal);
+      showMessage(`Created job for ${customer_name}.`);
+      els.newJobForm.reset();
+    });
+
+    document.addEventListener("change", (e) => {
+      const stageSelect = e.target.closest("[data-stage-select]");
+      const installerSelect = e.target.closest("[data-installer-select]");
+
+      if(stageSelect){
+        updateJobStage(stageSelect.dataset.jobId, stageSelect.value);
+      }
+
+      if(installerSelect){
+        updateJobInstaller(installerSelect.dataset.jobId, installerSelect.value);
+      }
+    });
+
+    els.searchBtn.addEventListener("click", () => {
+      const firstInput = document.querySelector(".searchbar input, .job-select");
+      if(firstInput) firstInput.focus();
+      showMessage("Search is ready in the full build.");
+    });
+
+    const applyTheme = (theme) => {
+      document.documentElement.setAttribute("data-theme", theme);
+      localStorage.setItem(themeKey, theme);
+
+      const dark = theme === "dark";
+      els.themeToggle.setAttribute("aria-pressed", String(dark));
+      els.themeIcon.textContent = dark ? "☀" : "☾";
+      els.themeLabel.textContent = dark ? "Light mode" : "Dark mode";
+    };
+
+    const savedTheme = localStorage.getItem(themeKey);
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    applyTheme(savedTheme || (prefersDark ? "dark" : "light"));
+
+    els.themeToggle.addEventListener("click", () => {
+      const current = document.documentElement.getAttribute("data-theme");
+      applyTheme(current === "dark" ? "light" : "dark");
+    });
+
+    render(false);
+  </script>
+</body>
+</html>

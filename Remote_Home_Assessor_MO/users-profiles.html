@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Users & Profiles | Motability Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="app">
+    <header class="topbar">
+      <div class="topbar__brand">
+        <a class="brand-mark" href="index.html" aria-label="Home">
+            <img src="logo.jpg" alt="Motability Operations" href="index.html"/>
+        </a>
+        <div>
+          <p class="topbar__eyebrow">Motability Scheme</p>
+          <h1 class="topbar__title">Remote Home Assessor Portal</h1>
+        </div>
+      </div>
+
+      <nav class="topnav" aria-label="Primary">
+        <a href="users-profiles.html">Users</a>
+        <a href="ai-chatbot-dashboard.html">AI</a>
+        <a href="communications.html">Communications</a>
+        <a href="suppliers.html" aria-current="page">Suppliers</a>
+      </nav>
+
+      <div class="topbar__actions">
+        <button class="icon-btn" type="button" aria-label="Search">
+          <span aria-hidden="true">⌕</span>
+        </button>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">
+          <span class="theme-toggle__icon" aria-hidden="true">☾</span>
+          <span class="theme-toggle__label">Dark mode</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="main" class="page">
+      <section class="page-header">
+        <div>
+          <p class="eyebrow">People</p>
+          <h2>Users &amp; Profiles</h2>
+          <p class="page-header__text">
+            Search clients, filter records, and open an individual profile to view full details.
+          </p>
+        </div>
+
+        <button class="btn btn-primary" type="button">+ New Client</button>
+      </section>
+
+      <section class="tabs" aria-label="User views">
+        <button class="tab is-active" type="button" aria-current="page">Overview</button>
+        <button class="tab" type="button">Stats &amp; Insights</button>
+      </section>
+
+      <section class="filters" aria-label="Search and filters">
+        <label class="searchbar" for="client-search">
+          <span class="searchbar__icon" aria-hidden="true">⌕</span>
+          <input id="client-search" type="search" placeholder="Search clients, IDs, emails, postcodes..." />
+        </label>
+
+        <div class="filter-grid">
+          <label class="field">
+            <span>Country</span>
+            <select>
+              <option>All countries</option>
+              <option>United Kingdom</option>
+              <option>Ireland</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>City</span>
+            <select>
+              <option>All cities</option>
+              <option>Leeds</option>
+              <option>Manchester</option>
+              <option>Birmingham</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Assessment status</span>
+            <select>
+              <option>All statuses</option>
+              <option>New</option>
+              <option>In progress</option>
+              <option>Complete</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Assessor</span>
+            <select>
+              <option>All assessors</option>
+              <option>Remote Team A</option>
+              <option>Remote Team B</option>
+            </select>
+          </label>
+        </div>
+      </section>
+
+      <section class="content-grid">
+        <article class="table-card" aria-label="Client database">
+          <div class="table-card__header">
+            <div>
+              <h3>Client Database</h3>
+              <p>Searchable table of client records used by assessors.</p>
+            </div>
+
+            <div class="table-card__controls">
+              <button class="btn btn-ghost" type="button">Add filters</button>
+              <button class="icon-btn" type="button" aria-label="Download">
+                <span aria-hidden="true">⇩</span>
+              </button>
+              <button class="icon-btn" type="button" aria-label="Change view">
+                <span aria-hidden="true">▣</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="table-wrap" role="region" aria-label="Client records table" tabindex="0">
+            <table class="data-table">
+              <caption class="sr-only">Client records database</caption>
+              <thead>
+                <tr>
+                  <th scope="col" class="col-check">
+                    <label class="table-check">
+                      <input type="checkbox" aria-label="Select all records" />
+                    </label>
+                  </th>
+                  <th scope="col">Person ID</th>
+                  <th scope="col">Full Name</th>
+                  <th scope="col">Phone Number</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Address Line 1</th>
+                  <th scope="col">Address Line 2</th>
+                  <th scope="col">City</th>
+                  <th scope="col">Postcode</th>
+                  <th scope="col">Country</th>
+                  <th scope="col" class="col-actions">Actions</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td><label class="table-check"><input type="checkbox" aria-label="Select Alice Smith" /></label></td>
+                  <td><button class="text-link" type="button">P100021</button></td>
+                  <td><button class="user-link" type="button"><span class="avatar">AS</span><span>Alice Smith</span></button></td>
+                  <td>07700 900123</td>
+                  <td>alice.smith@email.com</td>
+                  <td>14 Green Lane</td>
+                  <td>West End</td>
+                  <td>Leeds</td>
+                  <td>LS12 4AB</td>
+                  <td>United Kingdom</td>
+                  <td><button class="row-menu" type="button" aria-label="Open actions for Alice Smith">⋮</button></td>
+                </tr>
+
+                <tr>
+                  <td><label class="table-check"><input type="checkbox" aria-label="Select Bob Johnson" /></label></td>
+                  <td><button class="text-link" type="button">P100022</button></td>
+                  <td><button class="user-link" type="button"><span class="avatar">BJ</span><span>Bob Johnson</span></button></td>
+                  <td>07700 900124</td>
+                  <td>bob.johnson@email.com</td>
+                  <td>25 Kings Road</td>
+                  <td>Central</td>
+                  <td>Manchester</td>
+                  <td>M21 7TR</td>
+                  <td>United Kingdom</td>
+                  <td><button class="row-menu" type="button" aria-label="Open actions for Bob Johnson">⋮</button></td>
+                </tr>
+
+                <tr>
+                  <td><label class="table-check"><input type="checkbox" aria-label="Select Carol Williams" /></label></td>
+                  <td><button class="text-link" type="button">P100023</button></td>
+                  <td><button class="user-link" type="button"><span class="avatar">CW</span><span>Carol Williams</span></button></td>
+                  <td>07700 900125</td>
+                  <td>carol.williams@email.com</td>
+                  <td>8 Station Road</td>
+                  <td>Northgate</td>
+                  <td>Birmingham</td>
+                  <td>B12 9AD</td>
+                  <td>United Kingdom</td>
+                  <td><button class="row-menu" type="button" aria-label="Open actions for Carol Williams">⋮</button></td>
+                </tr>
+
+                <tr>
+                  <td><label class="table-check"><input type="checkbox" aria-label="Select Dave Brown" /></label></td>
+                  <td><button class="text-link" type="button">P100024</button></td>
+                  <td><button class="user-link" type="button"><span class="avatar">DB</span><span>Dave Brown</span></button></td>
+                  <td>07700 900126</td>
+                  <td>dave.brown@email.com</td>
+                  <td>72 Oak Street</td>
+                  <td>River View</td>
+                  <td>Leeds</td>
+                  <td>LS8 1ZZ</td>
+                  <td>United Kingdom</td>
+                  <td><button class="row-menu" type="button" aria-label="Open actions for Dave Brown">⋮</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <aside class="profile-card" aria-label="Selected client details">
+          <div class="profile-card__header">
+            <div>
+              <p class="eyebrow">Selected client</p>
+              <h3>Alice Smith</h3>
+              <p class="profile-card__sub">Person ID: P100021</p>
+            </div>
+            <button class="btn btn-ghost" type="button" onclick="window.location.href='profile-detail.html';">Open full profile</button>
+          </div>
+
+          <div class="profile-block">
+            <h4>Contact</h4>
+            <dl class="profile-list">
+              <div><dt>Phone</dt><dd>07700 900123</dd></div>
+              <div><dt>Email</dt><dd>alice.smith@email.com</dd></div>
+            </dl>
+          </div>
+
+          <div class="profile-block">
+            <h4>Address</h4>
+            <dl class="profile-list">
+              <div><dt>Address line 1</dt><dd>14 Green Lane</dd></div>
+              <div><dt>Address line 2</dt><dd>West End</dd></div>
+              <div><dt>City</dt><dd>Leeds</dd></div>
+              <div><dt>Postcode</dt><dd>LS12 4AB</dd></div>
+              <div><dt>Country</dt><dd>United Kingdom</dd></div>
+            </dl>
+          </div>
+
+          <div class="profile-block profile-block--soft">
+            <h4>Assessment summary</h4>
+            <p>
+              Use this area for current status, notes, documents, communication history, and assessor actions.
+            </p>
+          </div>
+        </aside>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const root = document.documentElement;
+    const toggle = document.querySelector("[data-theme-toggle]");
+    const label = toggle.querySelector(".theme-toggle__label");
+    const icon = toggle.querySelector(".theme-toggle__icon");
+
+    const saved = localStorage.getItem("motability-theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const initialTheme = saved || (prefersDark ? "dark" : "light");
+
+    function setTheme(theme) {
+      root.setAttribute("data-theme", theme);
+      localStorage.setItem("motability-theme", theme);
+
+      const dark = theme === "dark";
+      toggle.setAttribute("aria-pressed", String(dark));
+      icon.textContent = dark ? "☀" : "☾";
+      label.textContent = dark ? "Light mode" : "Dark mode";
+    }
+
+    setTheme(initialTheme);
+    toggle.addEventListener("click", () => {
+      setTheme(root.getAttribute("data-theme") === "dark" ? "light" : "dark");
+    });
+  </script>
+</body>
+</html>

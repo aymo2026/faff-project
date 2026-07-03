@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Profile | Motability Portal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="app">
+    <header class="topbar">
+      <div class="topbar__brand">
+        <a class="brand-mark" href="index.html" aria-label="Home">
+            <img src="logo.jpg" alt="Motability Operations" href="index.html"/>
+        </a>
+        <div>
+          <p class="topbar__eyebrow">Motability Scheme</p>
+          <h1 class="topbar__title">Remote Home Assessor Portal</h1>
+        </div>
+      </div>
+
+      <nav class="topnav" aria-label="Primary">
+        <a href="users-profiles.html">Users</a>
+        <a href="ai-chatbot-dashboard.html">AI</a>
+        <a href="communications.html">Communications</a>
+        <a href="suppliers.html" aria-current="page">Suppliers</a>
+      </nav>
+
+      <div class="topbar__actions">
+        <button class="icon-btn" type="button" aria-label="Search">
+          <span aria-hidden="true">⌕</span>
+        </button>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">
+          <span class="theme-toggle__icon" aria-hidden="true">☾</span>
+          <span class="theme-toggle__label">Dark mode</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="main" class="page">
+      <section class="detail-header">
+        <div class="detail-header__identity">
+          <div class="detail-avatar" aria-hidden="true">AS</div>
+          <div>
+            <p class="eyebrow">Client profile</p>
+            <h2>Alice Smith</h2>
+            <p class="detail-header__sub">Person ID: P100021</p>
+          </div>
+        </div>
+
+        <div class="detail-header__actions">
+          <a class="btn btn-ghost" href="users-profiles.html">← Back to database</a>
+          <button class="btn btn-primary" type="button">Edit profile</button>
+          <button class="btn btn-ghost" type="button">Send identity info</button>
+        </div>
+      </section>
+
+      <section class="detail-layout">
+        <article class="detail-card detail-card--summary" aria-label="Profile summary">
+          <h3>Summary</h3>
+
+          <dl class="summary-list">
+            <div><dt>Full name</dt><dd>Alice Smith</dd></div>
+            <div><dt>Person ID</dt><dd>P100021</dd></div>
+            <div><dt>Phone number</dt><dd>07700 900123</dd></div>
+            <div><dt>Email</dt><dd>alice.smith@email.com</dd></div>
+            <div><dt>City</dt><dd>Leeds</dd></div>
+            <div><dt>Postcode</dt><dd>LS12 4AB</dd></div>
+            <div><dt>Country</dt><dd>United Kingdom</dd></div>
+          </dl>
+        </article>
+
+        <article class="detail-card detail-card--main" aria-label="Client information">
+          <div class="detail-card__head">
+            <div>
+              <h3>Client information</h3>
+              <p>All address and contact fields in one secure view.</p>
+            </div>
+            <span class="status-pill status-pill--active">Active</span>
+          </div>
+
+          <div class="detail-table" role="list">
+            <div class="detail-row" role="listitem">
+              <span class="detail-key">Person ID</span>
+              <span class="detail-value">P100021</span>
+            </div>
+
+            <div class="detail-row" role="listitem">
+              <span class="detail-key">Full name</span>
+              <span class="detail-value">Alice Smith</span>
+            </div>
+
+            <div class="detail-row" role="listitem">
+              <span class="detail-key">Phone number</span>
+              <span class="detail-value">07700 900123</span>
+            </div>
+
+            <div class="detail-row" role="listitem">
+              <span class="detail-key">Email</span>
+              <span class="detail-value detail-link">alice.smith@email.com</span>
+            </div>
+
+            <div class="detail-row" role="listitem">
+              <span class="detail-key">Address line 1</span>
+              <span class="detail-value">14 Green Lane</span>
+            </div>
+
+            <div class="detail-row" role="listitem">
+              <span class="detail-key">Address line 2</span>
+              <span class="detail-value">West End</span>
+            </div>
+
+            <div class="detail-row" role="listitem">
+              <span class="detail-key">City</span>
+              <span class="detail-value">Leeds</span>
+            </div>
+
+            <div class="detail-row" role="listitem">
+              <span class="detail-key">Postcode</span>
+              <span class="detail-value">LS12 4AB</span>
+            </div>
+
+            <div class="detail-row" role="listitem">
+              <span class="detail-key">Country</span>
+              <span class="detail-value">United Kingdom</span>
+            </div>
+          </div>
+        </article>
+
+        <aside class="detail-sidebar">
+          <article class="detail-card" aria-label="Assessment status">
+            <h3>Assessment status</h3>
+            <div class="status-stack">
+              <div class="status-item">
+                <span class="status-item__label">Current stage</span>
+                <span class="status-item__value">In review</span>
+              </div>
+              <div class="status-item">
+                <span class="status-item__label">Assigned assessor</span>
+                <span class="status-item__value">Remote Team A</span>
+              </div>
+              <div class="status-item">
+                <span class="status-item__label">Last updated</span>
+                <span class="status-item__value">Today</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="detail-card" aria-label="Recent activity">
+            <h3>Recent activity</h3>
+            <ul class="activity-list">
+              <li>Profile opened by assessor</li>
+              <li>Identity details verified</li>
+              <li>Address confirmed from form submission</li>
+            </ul>
+          </article>
+
+          <article class="detail-card detail-card--soft" aria-label="Notes">
+            <h3>Notes</h3>
+            <p>
+              Use this space for client notes, communication history, supporting documents, and next actions.
+            </p>
+          </article>
+        </aside>
+      </section>
+
+      <section class="detail-card detail-card--research" aria-label="Additional OSINT Research">
+        <div class="detail-card__head">
+          <div>
+            <p class="eyebrow">Analysis</p>
+            <h3>ADDITIONAL OSINT RESEARCH</h3>
+            <p>
+              Detailed AI-assisted context review for the case file. This section is for surfaced signals,
+              cross-checks, and summary insights that support the assessor workflow.
+            </p>
+          </div>
+          <span class="status-pill status-pill--research">AI Review</span>
+        </div>
+
+        <div class="research-grid">
+          <div class="research-panel">
+            <h4>Source coverage</h4>
+            <p>Publicly available signals, address-related context, and consistency checks across the case record.</p>
+          </div>
+
+          <div class="research-panel">
+            <h4>Key observations</h4>
+            <p>A concise AI summary of notable patterns, matching fields, and items that may require follow-up.</p>
+          </div>
+
+          <div class="research-panel">
+            <h4>Risk notes</h4>
+            <p>Flags, gaps, or unusual entries that should be reviewed by the assessor before proceeding.</p>
+          </div>
+
+          <div class="research-panel research-panel--wide">
+            <h4>AI narrative summary</h4>
+            <p>
+              This area can hold a longer structured analysis, with a clear distinction between verified data,
+              inferred context, and items requiring human confirmation.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const root = document.documentElement;
+    const toggle = document.querySelector("[data-theme-toggle]");
+    const label = toggle.querySelector(".theme-toggle__label");
+    const icon = toggle.querySelector(".theme-toggle__icon");
+
+    const saved = localStorage.getItem("motability-theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const initialTheme = saved || (prefersDark ? "dark" : "light");
+
+    function setTheme(theme) {
+      root.setAttribute("data-theme", theme);
+      localStorage.setItem("motability-theme", theme);
+
+      const dark = theme === "dark";
+      toggle.setAttribute("aria-pressed", String(dark));
+      icon.textContent = dark ? "☀" : "☾";
+      label.textContent = dark ? "Light mode" : "Dark mode";
+    }
+
+    setTheme(initialTheme);
+
+    toggle.addEventListener("click", () => {
+      setTheme(root.getAttribute("data-theme") === "dark" ? "light" : "dark");
+    });
+  </script>
+</body>
+</html>

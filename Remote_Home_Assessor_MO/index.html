@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Remote Home Assessor Portal | Motability</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="app">
+    <header class="topbar">
+      <div class="topbar__brand">
+        <a class="brand-mark" href="index.html" aria-label="Home">
+            <img src="logo.jpg" alt="Motability Operations" href="index.html"/>
+        </a>
+        <div>
+          <p class="topbar__eyebrow">Motability Scheme</p>
+          <h1 class="topbar__title">Remote Home Assessor Portal</h1>
+        </div>
+      </div>
+
+      <nav class="topnav" aria-label="Primary">
+        <a href="users-profiles.html">Users</a>
+        <a href="ai-chatbot-dashboard.html">AI</a>
+        <a href="communications.html">Communications</a>
+        <a href="suppliers.html" aria-current="page">Suppliers</a>
+      </nav>
+
+      <div class="topbar__actions">
+        <button class="icon-btn" type="button" aria-label="Search">
+          <span aria-hidden="true">⌕</span>
+        </button>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">
+          <span class="theme-toggle__icon" aria-hidden="true">☾</span>
+          <span class="theme-toggle__label">Dark mode</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="main" class="page">
+      <section class="hero-panel">
+        <div class="hero-panel__content">
+          <p class="eyebrow">Portal home</p>
+          <h2>Choose a workspace</h2>
+          <p>
+            A clean operational hub for assessors, client records, AI support, and supplier communication.
+          </p>
+        </div>
+
+        <div class="hero-panel__meta">
+          <div class="meta-chip">
+            <span class="meta-chip__label">Active cases</span>
+            <span class="meta-chip__value">128</span>
+          </div>
+          <div class="meta-chip">
+            <span class="meta-chip__label">Human escalations</span>
+            <span class="meta-chip__value">3 today</span>
+          </div>
+          <div class="meta-chip">
+            <span class="meta-chip__label">Pending reviews</span>
+            <span class="meta-chip__value">24</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="menu-grid" aria-label="Main menu">
+        <a class="menu-card menu-card--large menu-card--blue" href="users-profiles.html">
+          <span class="menu-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="8" cy="8" r="3.2" />
+              <path d="M3.5 19a4.8 4.8 0 0 1 9 0" />
+              <circle cx="17" cy="9" r="2.8" />
+              <path d="M13.8 19a4.3 4.3 0 0 1 7.2 0" />
+            </svg>
+          </span>
+          <span class="menu-card__body">
+            <span class="menu-card__title">Users &amp; Profiles</span>
+            <span class="menu-card__text">Search client records and open full profiles.</span>
+          </span>
+          <span class="menu-card__arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="menu-card menu-card--large menu-card--teal" href="ai-chatbot-dashboard.html">
+          <span class="menu-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4.5" y="5" width="15" height="12" rx="4" />
+              <path d="M8 17v2.5" />
+              <path d="M16 17v2.5" />
+              <path d="M9 9.5h0.01M15 9.5h0.01M8.5 13c1.2 1 2.6 1.5 3.5 1.5s2.3-.5 3.5-1.5" />
+            </svg>
+          </span>
+          <span class="menu-card__body">
+            <span class="menu-card__title">AI Chatbot</span>
+            <span class="menu-card__text">Monitor chats and escalate to a human when needed.</span>
+          </span>
+          <span class="menu-card__arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="menu-card menu-card--small menu-card--coral" href="#">
+          <span class="menu-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7.8 4.8a2 2 0 0 0-2.4.4L4.1 6.5c-.7.7-1 1.8-.7 2.8C4.7 15 9 19.3 14.7 20.6c1 .2 2.1 0 2.8-.7l1.3-1.3a2 2 0 0 0 .4-2.4l-1.4-2.8a1.8 1.8 0 0 0-2.4-.8l-1.5.8a12.5 12.5 0 0 1-4.2-4.2l.8-1.5a1.8 1.8 0 0 0-.8-2.4L7.8 4.8Z" />
+            </svg>
+          </span>
+          <span class="menu-card__body">
+            <span class="menu-card__title">Communications</span>
+            <span class="menu-card__text">Join calls and support live client conversations.</span>
+          </span>
+          <span class="menu-card__arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="menu-card menu-card--small menu-card--yellow" href="#">
+          <span class="menu-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 15a3 3 0 0 1-3 3H9l-5 3v-3H4a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h13a3 3 0 0 1 3 3v8Z" />
+              <path d="M7 9h10M7 12h7" />
+            </svg>
+          </span>
+          <span class="menu-card__body">
+            <span class="menu-card__title">Supplier Comms</span>
+            <span class="menu-card__text">Coordinate with third-party suppliers.</span>
+          </span>
+          <span class="menu-card__arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="menu-card menu-card--small menu-card--mint" href="#">
+          <span class="menu-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2.5v19" />
+              <path d="M4.5 8.5h15" />
+              <path d="M6.5 19.5h11" />
+              <path d="M8 8.5l2.4 11" />
+              <path d="M16 8.5l-2.4 11" />
+            </svg>
+          </span>
+          <span class="menu-card__body">
+            <span class="menu-card__title">Settings</span>
+            <span class="menu-card__text">Manage portal preferences and permissions.</span>
+          </span>
+          <span class="menu-card__arrow" aria-hidden="true">→</span>
+        </a>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const root = document.documentElement;
+    const toggle = document.querySelector("[data-theme-toggle]");
+    const label = toggle.querySelector(".theme-toggle__label");
+    const icon = toggle.querySelector(".theme-toggle__icon");
+
+    const saved = localStorage.getItem("motability-theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const initialTheme = saved || (prefersDark ? "dark" : "light");
+
+    function setTheme(theme) {
+      root.setAttribute("data-theme", theme);
+      localStorage.setItem("motability-theme", theme);
+
+      const dark = theme === "dark";
+      toggle.setAttribute("aria-pressed", String(dark));
+      icon.textContent = dark ? "☀" : "☾";
+      label.textContent = dark ? "Light mode" : "Dark mode";
+    }
+
+    setTheme(initialTheme);
+
+    toggle.addEventListener("click", () => {
+      setTheme(root.getAttribute("data-theme") === "dark" ? "light" : "dark");
+    });
+  </script>
+</body>
+</html>

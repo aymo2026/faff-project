@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Chatbot Dashboard | Motability Portal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="app">
+    <header class="topbar">
+      <div class="topbar__brand">
+        <a class="brand-mark" href="index.html" aria-label="Home">
+            <img src="logo.jpg" alt="Motability Operations" href="index.html"/>
+        </a>
+        <div>
+          <p class="topbar__eyebrow">Motability Scheme</p>
+          <h1 class="topbar__title">Remote Home Assessor Portal</h1>
+        </div>
+      </div>
+
+      <nav class="topnav" aria-label="Primary">
+        <a href="users-profiles.html">Users</a>
+        <a href="ai-chatbot-dashboard.html">AI</a>
+        <a href="communications.html">Communications</a>
+        <a href="suppliers.html" aria-current="page">Suppliers</a>
+      </nav>
+
+      <div class="topbar__actions">
+        <button class="icon-btn" type="button" aria-label="Search">
+          <span aria-hidden="true">⌕</span>
+        </button>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">
+          <span class="theme-toggle__icon" aria-hidden="true">☾</span>
+          <span class="theme-toggle__label">Dark mode</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="main" class="page">
+      <section class="page-header">
+        <div>
+          <p class="eyebrow">AI support</p>
+          <h2>AI Chatbot Dashboard</h2>
+          <p class="page-header__text">
+            Monitor live chatbot activity, surface useful guidance, and escalate to a human assessor whenever needed.
+          </p>
+        </div>
+
+        <div class="page-header__actions">
+          <button class="btn btn-ghost" type="button">Human handover</button>
+          <button class="btn btn-primary" type="button">Open new chat</button>
+        </div>
+      </section>
+
+      <section class="ai-layout" aria-label="AI chatbot dashboard">
+        <aside class="chat-list-card" aria-label="Chat list">
+          <div class="chat-list-card__top">
+            <h3>Chats</h3>
+            <button class="icon-btn icon-btn--small" type="button" aria-label="Add chat">＋</button>
+          </div>
+
+          <div class="chat-tabs" aria-label="Chat filters">
+            <button class="chat-tab is-active" type="button" aria-current="page">Direct</button>
+            <button class="chat-tab" type="button">Group</button>
+            <button class="chat-tab" type="button">Public</button>
+          </div>
+
+          <label class="searchbar searchbar--full" for="chat-search">
+            <span class="searchbar__icon" aria-hidden="true">⌕</span>
+            <input id="chat-search" type="search" placeholder="Search chats..." />
+          </label>
+
+          <div class="chat-items" role="list" aria-label="Conversation list">
+            <button class="chat-item is-active" type="button" role="listitem" aria-label="Open conversation with Alice Smith">
+              <span class="avatar">AS</span>
+              <span class="chat-item__meta">
+                <span class="chat-item__name">Alice Smith</span>
+                <span class="chat-item__text">Asking about the next step in the form</span>
+              </span>
+              <span class="chat-item__time">09:25</span>
+            </button>
+
+            <button class="chat-item" type="button" role="listitem" aria-label="Open conversation with Bob Johnson">
+              <span class="avatar">BJ</span>
+              <span class="chat-item__meta">
+                <span class="chat-item__name">Bob Johnson</span>
+                <span class="chat-item__text">Needs help with address details</span>
+              </span>
+              <span class="chat-item__time">10:02</span>
+            </button>
+
+            <button class="chat-item" type="button" role="listitem" aria-label="Open conversation with Carol Williams">
+              <span class="avatar">CW</span>
+              <span class="chat-item__meta">
+                <span class="chat-item__name">Carol Williams</span>
+                <span class="chat-item__text">Waiting for a human review</span>
+              </span>
+              <span class="chat-item__time">10:18</span>
+            </button>
+
+            <button class="chat-item" type="button" role="listitem" aria-label="Open conversation with Dave Brown">
+              <span class="avatar">DB</span>
+              <span class="chat-item__meta">
+                <span class="chat-item__name">Dave Brown</span>
+                <span class="chat-item__text">Asked about a supplier update</span>
+              </span>
+              <span class="chat-item__time">10:39</span>
+            </button>
+          </div>
+        </aside>
+
+        <section class="chat-panel" aria-label="Conversation">
+          <header class="chat-panel__header">
+            <div class="chat-panel__person">
+              <div class="avatar avatar--lg">AS</div>
+              <div>
+                <h3>Alice Smith</h3>
+                <p>Last seen 10:30am · AI assisting</p>
+              </div>
+            </div>
+
+            <div class="chat-panel__tools">
+              <button class="icon-btn icon-btn--small" type="button" aria-label="Call user">☎</button>
+              <button class="icon-btn icon-btn--small" type="button" aria-label="Video call">▣</button>
+              <button class="icon-btn icon-btn--small" type="button" aria-label="More actions">⋮</button>
+            </div>
+          </header>
+
+          <div class="chat-thread" aria-label="Messages">
+            <div class="message message--assistant">
+              <div class="message__header">
+                <span>AI assistant</span>
+                <span>09:25</span>
+              </div>
+              <p>Hi Alice, I can help with the assessment steps. Would you like me to explain the next part of the form?</p>
+            </div>
+
+            <div class="message message--assistant">
+              <div class="message__header">
+                <span>AI assistant</span>
+                <span>09:28</span>
+              </div>
+              <p>I can also summarise your details for the assessor and flag anything that may need human review.</p>
+            </div>
+
+            <div class="message message--user">
+              <div class="message__header">
+                <span>Alice Smith</span>
+                <span>09:41</span>
+              </div>
+              <p>I would like to know what happens after I submit the form.</p>
+            </div>
+
+            <div class="message message--assistant message--highlight">
+              <div class="message__header">
+                <span>AI assistant</span>
+                <span>09:42</span>
+              </div>
+              <p>After submission, your assessor reviews the information and may contact you if more detail is needed. I can also transfer you to a person now.</p>
+            </div>
+          </div>
+
+          <footer class="chat-composer" aria-label="Message composer">
+            <label class="chat-input">
+              <span class="sr-only">Type a message</span>
+              <input type="text" placeholder="Say something..." />
+            </label>
+
+            <div class="chat-composer__actions">
+              <button class="icon-btn icon-btn--small" type="button" aria-label="Attach file">＋</button>
+              <button class="icon-btn icon-btn--small" type="button" aria-label="Insert help article">◫</button>
+              <button class="btn btn-ghost chat-escalate" type="button">Human intervention</button>
+              <button class="btn btn-primary" type="button">Send</button>
+            </div>
+          </footer>
+        </section>
+
+        <aside class="ai-side" aria-label="Monitoring and suggestions">
+          <article class="detail-card ai-side__card">
+            <div class="detail-card__head">
+              <div>
+                <p class="eyebrow">Monitoring</p>
+                <h3>Chat usage</h3>
+              </div>
+              <span class="status-pill status-pill--research">Live</span>
+            </div>
+
+            <div class="status-stack">
+              <div class="status-item">
+                <span class="status-item__label">Active conversations</span>
+                <span class="status-item__value">12</span>
+              </div>
+              <div class="status-item">
+                <span class="status-item__label">Human escalations</span>
+                <span class="status-item__value">3 today</span>
+              </div>
+              <div class="status-item">
+                <span class="status-item__label">Potential misuse</span>
+                <span class="status-item__value">1 flag</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="detail-card ai-side__card">
+            <div class="detail-card__head">
+              <div>
+                <p class="eyebrow">Support</p>
+                <h3>Suggested actions</h3>
+              </div>
+            </div>
+
+            <ul class="activity-list">
+              <li>Offer a human handover when the user asks for final decisions.</li>
+              <li>Surface form guidance when address or identity fields are missing.</li>
+              <li>Flag repeated or unusual prompts for assessor review.</li>
+            </ul>
+          </article>
+
+          <article class="detail-card detail-card--soft ai-side__card">
+            <h3>Human intervention</h3>
+            <p>
+              This dashboard should always allow a person to step in when the chatbot cannot safely or confidently answer.
+            </p>
+            <button class="btn btn-primary btn-block" type="button">Escalate to assessor</button>
+          </article>
+        </aside>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const root = document.documentElement;
+    const toggle = document.querySelector("[data-theme-toggle]");
+    const label = toggle.querySelector(".theme-toggle__label");
+    const icon = toggle.querySelector(".theme-toggle__icon");
+
+    const saved = localStorage.getItem("motability-theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const initialTheme = saved || (prefersDark ? "dark" : "light");
+
+    function setTheme(theme) {
+      root.setAttribute("data-theme", theme);
+      localStorage.setItem("motability-theme", theme);
+
+      const dark = theme === "dark";
+      toggle.setAttribute("aria-pressed", String(dark));
+      icon.textContent = dark ? "☀" : "☾";
+      label.textContent = dark ? "Light mode" : "Dark mode";
+    }
+
+    setTheme(initialTheme);
+
+    toggle.addEventListener("click", () => {
+      setTheme(root.getAttribute("data-theme") === "dark" ? "light" : "dark");
+    });
+  </script>
+</body>
+</html>
