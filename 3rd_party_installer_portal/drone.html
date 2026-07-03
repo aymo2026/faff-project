@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drone Survey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="sidebar-logo" href="index.html">
+        <img src="motability-logo.png" alt="Motability Operations" />
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="index.html">Dashboard</a>
+        <a href="successful_survey_applicants.html">Successful Survey Applicants</a>
+        <a href="dispatch.html">Dispatch</a>
+        <a href="gigs.html">Gigs</a>
+        <a class="active" href="drone.html">Drone</a>
+        <a href="mo_support.html">MO Support</a>
+        <a href="reports.html">Reports</a>
+        <a href="settings.html">Settings</a>
+      </nav>
+    </aside>
+
+    <div class="main-wrap">
+      <header class="topbar">
+        <div>
+          <h1>Drone Survey</h1>
+          <p class="muted">Live control view for drone-based external surveys</p>
+        </div>
+        <button id="themeToggle" class="theme-btn" type="button">Dark mode</button>
+      </header>
+
+      <main class="content drone-page">
+        <section class="kpi-row">
+          <article class="card kpi-card">
+            <p class="muted">Mission</p>
+            <h2>DRN-24198</h2>
+            <span class="status status-live">Active</span>
+          </article>
+
+          <article class="card kpi-card">
+            <p class="muted">Flight time</p>
+            <h2>08:42</h2>
+            <span class="status status-info">Minutes</span>
+          </article>
+
+          <article class="card kpi-card">
+            <p class="muted">Images captured</p>
+            <h2>128</h2>
+            <span class="status status-info">Photos</span>
+          </article>
+
+          <article class="card kpi-card">
+            <p class="muted">Coverage</p>
+            <h2>76%</h2>
+            <span class="status status-warn">Complete</span>
+          </article>
+        </section>
+
+        <section class="drone-grid">
+          <div class="drone-column">
+            <section class="card panel">
+              <div class="section-header">
+                <h2>Live drone feed</h2>
+                <span class="status status-live">Live</span>
+              </div>
+
+              <div class="drone-feed">
+                <img
+                  src="drone-placeholder.png"
+                  alt="Drone control view"
+                  class="drone-feed-image"
+                />
+                <div class="drone-feed-caption">
+                  <p class="muted">Placeholder view for live camera, map overlay, and flight telemetry.</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="card panel">
+              <div class="section-header">
+                <h2>Mission progress</h2>
+                <button class="pill-btn" type="button">View log</button>
+              </div>
+
+              <div class="progress-track">
+                <div class="progress-fill" style="width: 76%;"></div>
+              </div>
+
+              <div class="drone-steps">
+                <div>
+                  <p class="muted">Mission planned</p>
+                  <h3>Complete</h3>
+                </div>
+                <div>
+                  <p class="muted">Drone deployed</p>
+                  <h3>Complete</h3>
+                </div>
+                <div>
+                  <p class="muted">Data capture</p>
+                  <h3>In progress</h3>
+                </div>
+                <div>
+                  <p class="muted">Report generation</p>
+                  <h3>Pending</h3>
+                </div>
+              </div>
+            </section>
+
+            <section class="card panel">
+              <div class="section-header">
+                <h2>Recent captures</h2>
+                <button class="pill-btn" type="button">Open gallery</button>
+              </div>
+
+              <div class="capture-grid">
+                <div class="capture-box"></div>
+                <div class="capture-box"></div>
+                <div class="capture-box"></div>
+                <div class="capture-box"></div>
+              </div>
+            </section>
+          </div>
+
+          <div class="drone-column">
+            <section class="card panel">
+              <div class="section-header">
+                <h2>Drone controls</h2>
+                <button class="pill-btn" type="button">Mission plan</button>
+              </div>
+
+              <div class="settings-list">
+                <label class="setting-block" for="flightMode">
+                  <div>
+                    <h3>Flight mode</h3>
+                    <p class="muted">Choose the capture mode for this mission.</p>
+                  </div>
+                  <select id="flightMode">
+                    <option>Photo survey</option>
+                    <option>Video survey</option>
+                    <option>LiDAR scan</option>
+                  </select>
+                </label>
+
+                <label class="setting-block" for="resolution">
+                  <div>
+                    <h3>Resolution</h3>
+                    <p class="muted">Adjust image quality for the capture.</p>
+                  </div>
+                  <select id="resolution">
+                    <option>1080p</option>
+                    <option>1440p</option>
+                    <option>4K</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="drone-controls">
+                <button class="secondary-btn" type="button">Take photo</button>
+                <button class="secondary-btn" type="button">Start recording</button>
+                <button class="secondary-btn" type="button">Return home</button>
+                <button class="primary-btn" type="button">Dispatch drone</button>
+              </div>
+            </section>
+
+            <section class="card panel">
+              <div class="section-header">
+                <h2>Status summary</h2>
+                <button class="pill-btn" type="button">Details</button>
+              </div>
+
+              <div class="details-grid">
+                <div>
+                  <p class="muted">Battery</p>
+                  <h3>82%</h3>
+                </div>
+                <div>
+                  <p class="muted">Signal</p>
+                  <h3>Strong</h3>
+                </div>
+                <div>
+                  <p class="muted">Altitude</p>
+                  <h3>28m</h3>
+                </div>
+                <div>
+                  <p class="muted">Speed</p>
+                  <h3>4.2m/s</h3>
+                </div>
+              </div>
+            </section>
+
+            <section class="card panel">
+              <div class="section-header">
+                <h2>Compliance and notes</h2>
+                <button class="pill-btn" type="button">Log note</button>
+              </div>
+
+              <div class="activity-list">
+                <p><strong>Compliance</strong> Flight path clear and within approved area.</p>
+                <p><strong>Weather</strong> Conditions stable for current mission.</p>
+                <p><strong>Notes</strong> Exterior scan in progress for roofline access.</p>
+                <p><strong>Next action</strong> Capture final angle and generate report.</p>
+              </div>
+            </section>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer" role="contentinfo">
+        <div class="site-footer__inner">
+          <p class="site-footer__brand">Motability Operations Supplier Portal</p>
+          <nav class="site-footer__links" aria-label="Footer links">
+            <a href="settings.html">Accessibility</a>
+            <a href="reports.html">Help</a>
+            <a href="mo_support.html">Contact MO Support</a>
+          </nav>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gigs Marketplace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="sidebar-logo" href="index.html">
+        <img src="motability-logo.png" alt="Motability Operations" />
+      </a>
+
+      <nav class="sidebar-nav">
+        <a href="index.html">Dashboard</a>
+        <a href="successful_survey_applicants.html">Successful Survey Applicants</a>
+        <a href="dispatch.html">Dispatch</a>
+        <a class="active" href="gigs.html">Gigs</a>
+        <a href="mo_support.html">MO Support</a>
+        <a href="reports.html">Reports</a>
+        <a href="settings.html">Settings</a>
+      </nav>
+    </aside>
+
+    <div class="main-wrap">
+      <header class="topbar">
+        <div>
+          <h1>Gigs Marketplace</h1>
+          <p class="muted">Local community support for assisted installations</p>
+        </div>
+        <button id="themeToggle" class="theme-btn" type="button">Dark mode</button>
+      </header>
+
+      <main class="content gigs-page">
+        <section class="card gig-hero">
+          <div>
+            <p class="muted">Community-first model</p>
+            <h2>Match local helpers to installation support jobs</h2>
+            <p class="muted">
+              A flexible Uber-style marketplace where trusted local helpers, family members, and friends can step in to assist with access, coordination, and light support tasks.
+            </p>
+          </div>
+
+          <div class="gig-hero-actions">
+            <button class="primary-btn">Post a gig</button>
+            <button class="secondary-btn">Review applicants</button>
+          </div>
+        </section>
+
+        <section class="gig-filters">
+          <button class="pill-btn">Nearby</button>
+          <button class="pill-btn">Verified</button>
+          <button class="pill-btn">Family / Friend support</button>
+          <button class="pill-btn">Available now</button>
+          <button class="pill-btn">Travel under 5 miles</button>
+        </section>
+
+        <section class="gig-grid">
+          <div class="card panel">
+            <div class="section-header">
+              <h2>Available helpers</h2>
+              <button class="pill-btn">Sort</button>
+            </div>
+
+            <div class="queue-list">
+              <article class="gig-item">
+                <div>
+                  <h3>Alex M.</h3>
+                  <p class="muted">0.8 miles away • Verified • 4.9 rating</p>
+                </div>
+                <button class="primary-btn">Invite</button>
+              </article>
+
+              <article class="gig-item">
+                <div>
+                  <h3>Family helper</h3>
+                  <p class="muted">Customer nominated • Flexible timing</p>
+                </div>
+                <button class="secondary-btn">Approve</button>
+              </article>
+
+              <article class="gig-item">
+                <div>
+                  <h3>Community support worker</h3>
+                  <p class="muted">2.1 miles away • Available today</p>
+                </div>
+                <button class="primary-btn">Offer gig</button>
+              </article>
+            </div>
+          </div>
+
+          <div class="card panel">
+            <div class="section-header">
+              <h2>Marketplace details</h2>
+              <button class="pill-btn">Trust & safety</button>
+            </div>
+
+            <div class="details-grid">
+              <div>
+                <p class="muted">Identity</p>
+                <h3>Verified users only</h3>
+              </div>
+              <div>
+                <p class="muted">Purpose</p>
+                <h3>Local support tasks</h3>
+              </div>
+              <div>
+                <p class="muted">Payments</p>
+                <h3>Small fixed fee</h3>
+              </div>
+              <div>
+                <p class="muted">Coverage</p>
+                <h3>Nearby community</h3>
+              </div>
+            </div>
+
+            <p class="muted">
+              Use this space for community impact messaging, helper reliability, and job completion tracking.
+            </p>
+          </div>
+
+          <div class="card panel">
+            <div class="section-header">
+              <h2>Community impact</h2>
+              <button class="pill-btn">View stats</button>
+            </div>
+
+            <div class="mini-grid">
+              <div>
+                <p class="muted">Jobs completed</p>
+                <h3>128</h3>
+              </div>
+              <div>
+                <p class="muted">Local helpers</p>
+                <h3>34</h3>
+              </div>
+              <div>
+                <p class="muted">Avg response</p>
+                <h3>12 mins</h3>
+              </div>
+              <div>
+                <p class="muted">Customer satisfaction</p>
+                <h3>98%</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="card panel">
+            <div class="section-header">
+              <h2>Gig workflow</h2>
+              <button class="pill-btn">Process</button>
+            </div>
+
+            <div class="activity-list">
+              <p><strong>1.</strong> Post support need.</p>
+              <p><strong>2.</strong> Nearby helper accepts.</p>
+              <p><strong>3.</strong> Identity and suitability confirmed.</p>
+              <p><strong>4.</strong> Job completed and recorded.</p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer" role="contentinfo">
+        <div class="site-footer__inner">
+          <p class="site-footer__brand">
+            Motability Operations Supplier Portal
+          </p>
+
+          <nav class="site-footer__links" aria-label="Footer links">
+            <a href="settings.html">Accessibility</a>
+            <a href="reports.html">Help</a>
+            <a href="mo_support.html">Contact MO Support</a>
+          </nav>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

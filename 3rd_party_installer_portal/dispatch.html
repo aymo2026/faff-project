@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dispatch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="sidebar-logo" href="index.html">
+        <img src="motability-logo.png" alt="Motability Operations" />
+      </a>
+
+      <nav class="sidebar-nav">
+        <a href="index.html">Dashboard</a>
+        <a href="successful_survey_applicants.html">Successful Survey Applicants</a>
+        <a class="active" href="dispatch.html">Dispatch</a>
+        <a href="gigs.html">Gigs</a>
+        <a href="mo_support.html">MO Support</a>
+        <a href="reports.html">Reports</a>
+        <a href="settings.html">Settings</a>
+      </nav>
+    </aside>
+
+    <div class="main-wrap">
+      <a href="gigs.html"></a>
+      <header class="topbar">
+        <div>
+          <h1>Dispatch</h1>
+          <p class="muted">Job queue, gigs, drone control, and courier scan logistics</p>
+        </div>
+        <button id="themeToggle" class="theme-btn" type="button">Dark mode</button>
+      </header>
+
+      <main class="content dispatch-page">
+        <section class="kpi-row">
+          <article class="card kpi-card">
+            <p class="muted">Ready to dispatch</p>
+            <h2>18</h2>
+          </article>
+          <article class="card kpi-card">
+            <p class="muted">Scheduled today</p>
+            <h2>7</h2>
+          </article>
+          <article class="card kpi-card">
+            <p class="muted">Drone jobs</p>
+            <h2>4</h2>
+          </article>
+          <article class="card kpi-card">
+            <p class="muted">Courier LiDAR kits</p>
+            <h2>3</h2>
+          </article>
+        </section>
+
+        <section class="dispatch-grid">
+          <div class="dispatch-column">
+            <section class="card panel">
+              <div class="section-header">
+                <h2>Job queue</h2>
+                <button class="pill-btn">Filter</button>
+              </div>
+
+              <div class="queue-list">
+                <article class="queue-item">
+                  <div>
+                    <h3>Applicant A</h3>
+                    <p class="muted">Leeds • High priority • Survey approved</p>
+                  </div>
+                  <span class="status status-urgent">Ready</span>
+                </article>
+
+                <article class="queue-item">
+                  <div>
+                    <h3>Applicant B</h3>
+                    <p class="muted">York • Awaiting assignment</p>
+                  </div>
+                  <span class="status status-warn">Review</span>
+                </article>
+
+                <article class="queue-item">
+                  <div>
+                    <h3>Applicant C</h3>
+                    <p class="muted">Sheffield • Needs LiDAR scan</p>
+                  </div>
+                  <span class="status status-info">Scan</span>
+                </article>
+              </div>
+            </section>
+
+            <section class="card panel">
+            <div class="section-header">
+              <h2>Power bank / battery pack dispatch</h2>
+              <button class="pill-btn">Create order</button>
+            </div>
+
+            <p class="muted">
+              Dispatch temporary battery support when a charger install is delayed, an interim solution is needed, or the household needs short-term assistance.
+            </p>
+
+            <div class="mini-grid">
+              <div>
+                <p class="muted">Stock available</p>
+                <h3>12 units</h3>
+              </div>
+              <div>
+                <p class="muted">Priority</p>
+                <h3>High / Urgent</h3>
+              </div>
+              <div>
+                <p class="muted">Delivery</p>
+                <h3>Courier / Internal</h3>
+              </div>
+              <div>
+                <p class="muted">Return</p>
+                <h3>Tracked</h3>
+              </div>
+            </div>
+
+            <div class="control-row">
+              <button class="secondary-btn">Send power bank</button>
+              <button class="secondary-btn">Send battery pack</button>
+              <button class="primary-btn">Mark dispatched</button>
+            </div>
+          </section>
+
+            <section class="card panel">
+              <div class="section-header">
+                <h2>Gigs marketplace</h2>
+                <button class="pill-btn">Post gig</button>
+              </div>
+
+              <p class="muted">
+                Local helpers can accept short tasks when a family member or friend is supporting the installation.
+              </p>
+
+              <div class="queue-list">
+                <article class="gig-item">
+                  <div>
+                    <h3>Helper nearby: 1.2 miles</h3>
+                    <p class="muted">Available now • Verified • 4.9 rating</p>
+                  </div>
+                  <button class="primary-btn">Invite</button>
+                </article>
+
+                <article class="gig-item">
+                  <div>
+                    <h3>Family support slot</h3>
+                    <p class="muted">Customer nominated helper</p>
+                  </div>
+                  <button class="secondary-btn">Confirm</button>
+                </article>
+              </div>
+            </section>
+
+            <section class="card panel">
+              <div class="section-header">
+                <h2>Courier LiDAR dispatch</h2>
+                <button class="pill-btn">Track parcel</button>
+              </div>
+
+              <p class="muted">
+                Send an internal scan kit to site when a remote or physical LiDAR capture is needed.
+              </p>
+
+              <div class="mini-grid">
+                <div>
+                  <p class="muted">Kit status</p>
+                  <h3>Ready</h3>
+                </div>
+                <div>
+                  <p class="muted">Courier</p>
+                  <h3>Internal</h3>
+                </div>
+                <div>
+                  <p class="muted">ETA</p>
+                  <h3>Tomorrow</h3>
+                </div>
+                <div>
+                  <p class="muted">Return label</p>
+                  <h3>Generated</h3>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <div class="dispatch-column">
+            <section class="card drone-panel">
+              <div class="section-header">
+                <h2>Drone control</h2>
+                <span class="status status-live">Live</span>
+              </div>
+
+              <div class="drone-view">
+                <div class="drone-overlay">
+                  <p class="muted">Live camera feed placeholder</p>
+                  <h3>HD preview</h3>
+                  <p class="muted">Battery, location, compliance, and capture controls</p>
+                </div>
+              </div>
+
+              <div class="drone-stats">
+                <div class="stat-box">
+                  <p class="muted">Battery</p>
+                  <h3>82%</h3>
+                </div>
+                <div class="stat-box">
+                  <p class="muted">Signal</p>
+                  <h3>Strong</h3>
+                </div>
+                <div class="stat-box">
+                  <p class="muted">Altitude</p>
+                  <h3>28m</h3>
+                </div>
+                <div class="stat-box">
+                  <p class="muted">Location</p>
+                  <h3>On route</h3>
+                </div>
+              </div>
+
+              <div class="control-row">
+                <button class="secondary-btn">Start capture</button>
+                <button class="secondary-btn">Pause</button>
+                <button class="primary-btn">Dispatch drone</button>
+              </div>
+            </section>
+
+            <section class="card panel">
+              <div class="section-header">
+                <h2>Job details</h2>
+                <button class="pill-btn">Open case</button>
+              </div>
+
+              <div class="details-grid">
+                <div>
+                  <p class="muted">Accessibility notes</p>
+                  <h3>Wheelchair access required</h3>
+                </div>
+                <div>
+                  <p class="muted">Installation type</p>
+                  <h3>Standard charger</h3>
+                </div>
+                <div>
+                  <p class="muted">Preferred route</p>
+                  <h3>Engineer</h3>
+                </div>
+                <div>
+                  <p class="muted">Support channel</p>
+                  <h3>MO team linked</h3>
+                </div>
+              </div>
+            </section>
+
+            <section class="card panel">
+              <div class="section-header">
+                  <h2>Drone Survey Centre</h2>
+
+                  <a href="drone.html" class="primary-btn">
+                      Open Drone Dashboard
+                  </a>
+              </div>
+
+              <p class="muted">
+                  Access the live drone survey workspace for external property inspections,
+                  roofline assessments, LiDAR capture and report generation.
+              </p>
+
+              <div class="mini-grid">
+
+                  <div>
+                      <p class="muted">Mission Status</p>
+                      <h3>Ready</h3>
+                  </div>
+
+                  <div>
+                      <p class="muted">Available Drones</p>
+                      <h3>3 Online</h3>
+                  </div>
+
+                  <div>
+                      <p class="muted">Current Queue</p>
+                      <h3>4 Missions</h3>
+                  </div>
+
+                  <div>
+                      <p class="muted">LiDAR Units</p>
+                      <h3>2 Available</h3>
+                  </div>
+
+              </div>
+
+              <div class="control-row">
+
+                  <a href="drone.html" class="primary-btn">
+                      Launch Drone Operations
+                  </a>
+
+                  <button class="secondary-btn">
+                      View Flight Logs
+                  </button>
+
+                  <button class="secondary-btn">
+                      Generate Survey Report
+                  </button>
+
+              </div>
+
+            </section>
+
+            <section class="card panel">
+              <div class="section-header">
+                <h2>Activity log</h2>
+                <button class="pill-btn">History</button>
+              </div>
+
+              <div class="activity-list">
+                <p><strong>10:32</strong> Survey approved and added to queue.</p>
+                <p><strong>10:40</strong> Gig helper invitation sent.</p>
+                <p><strong>10:55</strong> Courier LiDAR kit prepared.</p>
+                <p><strong>11:02</strong> Drone job created for external scan.</p>
+              </div>
+            </section>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer" role="contentinfo">
+        <div class="site-footer__inner">
+          <p class="site-footer__brand">
+            Motability Operations Supplier Portal
+          </p>
+
+          <nav class="site-footer__links" aria-label="Footer links">
+            <a href="settings.html">Accessibility</a>
+            <a href="reports.html">Help</a>
+            <a href="mo_support.html">Contact MO Support</a>
+          </nav>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

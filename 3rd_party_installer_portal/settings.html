@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Settings</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="sidebar-logo" href="index.html">
+        <img src="motability-logo.png" alt="Motability Operations" />
+      </a>
+
+      <nav class="sidebar-nav">
+        <a href="index.html">Dashboard</a>
+        <a href="successful_survey_applicants.html">Successful Survey Applicants</a>
+        <a href="dispatch.html">Dispatch</a>
+        <a href="gigs.html">Gigs</a>
+        <a href="mo_support.html">MO Support</a>
+        <a href="reports.html">Reports</a>
+        <a class="active" href="settings.html">Settings</a>
+      </nav>
+    </aside>
+
+    <div class="main-wrap">
+      <header class="topbar">
+        <h1>Settings</h1>
+        <button id="themeToggle" class="theme-btn" type="button">Dark mode</button>
+      </header>
+
+      <main class="content settings-page">
+
+        <section class="kpi-row">
+
+          <article class="card kpi-card">
+
+            <p class="muted">Profile</p>
+
+            <h2>Supplier Admin</h2>
+
+            <span class="status status-info">Active</span>
+
+          </article>
+
+          <article class="card kpi-card">
+
+            <p class="muted">Accessibility mode</p>
+
+            <h2>Ready</h2>
+
+            <span class="status status-live">On</span>
+
+          </article>
+
+          <article class="card kpi-card">
+
+            <p class="muted">Theme</p>
+
+            <h2>Light / Dark</h2>
+
+            <span class="status status-warn">Toggleable</span>
+
+          </article>
+
+          <article class="card kpi-card">
+
+            <p class="muted">Keyboard support</p>
+
+            <h2>Full</h2>
+
+            <span class="status status-live">Enabled</span>
+
+          </article>
+
+        </section>
+
+        <section class="settings-grid">
+
+          <div class="settings-column">
+
+            <section class="card panel">
+
+              <div class="section-header">
+
+                <h2>Accessibility preferences</h2>
+
+                <button class="pill-btn" id="resetAccessibilityBtn" type="button">Reset</button>
+
+              </div>
+
+              <div class="settings-list">
+
+                <label class="setting-item" for="highContrastToggle">
+
+                  <div>
+
+                    <h3>High contrast mode</h3>
+
+                    <p class="muted">Increase contrast for easier readability.</p>
+
+                  </div>
+
+                  <input id="highContrastToggle" type="checkbox" />
+
+                </label>
+
+                <!--<label class="setting-item" for="reduceMotionToggle">
+
+                  <div>
+
+                    <h3>Reduce motion</h3>
+
+                    <p class="muted">Minimise animations and transitions.</p>
+
+                  </div>
+
+                  <input id="reduceMotionToggle" type="checkbox" />
+
+                </label>-->
+
+                <label class="setting-item" for="largeTextToggle">
+
+                  <div>
+
+                    <h3>Large text</h3>
+
+                    <p class="muted">Increase the default text size across the portal.</p>
+
+                  </div>
+
+                  <input id="largeTextToggle" type="checkbox" />
+
+                </label>
+
+                <label class="setting-item" for="textSpacingToggle">
+
+                  <div>
+
+                    <h3>Text spacing</h3>
+
+                    <p class="muted">Improve spacing for readability and comprehension.</p>
+
+                  </div>
+
+                  <input id="textSpacingToggle" type="checkbox" />
+
+                </label>
+
+                <label class="setting-item" for="focusModeToggle">
+
+                  <div>
+
+                    <h3>Focus mode</h3>
+
+                    <p class="muted">Hide non-essential elements and reduce visual clutter.</p>
+
+                  </div>
+
+                  <input id="focusModeToggle" type="checkbox" />
+
+                </label>
+
+              </div>
+
+            </section>
+
+            <section class="card panel">
+
+              <div class="section-header">
+
+                <h2>Display controls</h2>
+
+                <button class="pill-btn" id="applyDisplayBtn" type="button">Apply</button>
+
+              </div>
+
+              <div class="settings-list">
+
+                <label class="setting-block" for="fontSizeRange">
+
+                  <div>
+
+                    <h3>Font size</h3>
+
+                    <p class="muted">Adjust the base font size for the entire portal.</p>
+
+                  </div>
+
+                  <input id="fontSizeRange" type="range" min="14" max="22" value="16" />
+
+                </label>
+
+                <label class="setting-block" for="lineSpacingRange">
+
+                  <div>
+
+                    <h3>Line spacing</h3>
+
+                    <p class="muted">Make content easier to scan.</p>
+
+                  </div>
+
+                  <input id="lineSpacingRange" type="range" min="1" max="2" step="0.1" value="1.4" />
+
+                </label>
+
+                <label class="setting-block" for="sidebarWidthRange">
+
+                  <div>
+
+                    <h3>Sidebar width</h3>
+
+                    <p class="muted">Set a more compact or spacious navigation layout.</p>
+
+                  </div>
+
+                  <input id="sidebarWidthRange" type="range" min="240" max="340" value="290" />
+
+                </label>
+
+              </div>
+
+            </section>
+
+            <section class="card panel">
+
+              <div class="section-header">
+
+                <h2>Notifications</h2>
+
+                <button class="pill-btn" id="saveNotificationBtn" type="button">Save</button>
+
+              </div>
+
+              <div class="settings-list">
+
+                <label class="setting-item" for="emailAlertsToggle">
+
+                  <div>
+
+                    <h3>Email alerts</h3>
+
+                    <p class="muted">Receive updates for urgent cases and approvals.</p>
+
+                  </div>
+
+                  <input id="emailAlertsToggle" type="checkbox" checked />
+
+                </label>
+
+                <label class="setting-item" for="supportMessagesToggle">
+
+                  <div>
+
+                    <h3>Support messages</h3>
+
+                    <p class="muted">Notify when MO Support replies.</p>
+
+                  </div>
+
+                  <input id="supportMessagesToggle" type="checkbox" checked />
+
+                </label>
+
+                <label class="setting-item" for="dispatchRemindersToggle">
+
+                  <div>
+
+                    <h3>Dispatch reminders</h3>
+
+                    <p class="muted">Alert when jobs are due today.</p>
+
+                  </div>
+
+                  <input id="dispatchRemindersToggle" type="checkbox" />
+
+                </label>
+
+              </div>
+
+            </section>
+
+          </div>
+
+          <div class="settings-column">
+
+            <section class="card panel">
+              <div class="section-header">
+                <h2>Accessibility shortcuts</h2>
+                <button class="pill-btn" type="button">View all</button>
+              </div>
+
+              <div class="shortcut-grid">
+                <a class="shortcut-card" href="index.html">
+                  <strong>Alt + 1</strong>
+                  <span>Dashboard</span>
+                </a>
+
+                <a class="shortcut-card" href="successful_survey_applicants.html">
+                  <strong>Alt + 2</strong>
+                  <span>Survey Applicants</span>
+                </a>
+
+                <a class="shortcut-card" href="dispatch.html">
+                  <strong>Alt + 3</strong>
+                  <span>Dispatch</span>
+                </a>
+
+                <a class="shortcut-card" href="mo_support.html">
+                  <strong>Alt + 4</strong>
+                  <span>MO Support</span>
+                </a>
+
+                <a class="shortcut-card" href="reports.html">
+                  <strong>Alt + 5</strong>
+                  <span>Reports</span>
+                </a>
+              </div>
+
+              <p class="muted" style="margin-top: 0.75rem;">
+                You can click these cards directly or use the keyboard shortcuts.
+              </p>
+            </section>
+
+            <section class="card panel">
+
+              <div class="section-header">
+
+                <h2>Account and security</h2>
+
+                <button class="pill-btn" type="button">Manage</button>
+
+              </div>
+
+              <div class="details-grid">
+
+                <div>
+
+                  <p class="muted">Signed in as</p>
+
+                  <h3>Supplier Admin</h3>
+
+                </div>
+
+                <div>
+
+                  <p class="muted">Role</p>
+
+                  <h3>Operations</h3>
+
+                </div>
+
+                <div>
+
+                  <p class="muted">Two-factor auth</p>
+
+                  <h3>Enabled</h3>
+
+                </div>
+
+                <div>
+
+                  <p class="muted">Session timeout</p>
+
+                  <h3>30 mins</h3>
+
+                </div>
+
+              </div>
+
+            </section>
+
+            <section class="card panel">
+
+              <div class="section-header">
+
+                <h2>Language and reading support</h2>
+
+                <button class="pill-btn" id="saveLanguageBtn" type="button">Update</button>
+
+              </div>
+
+              <div class="settings-list">
+
+                <label class="setting-block" for="languageSelect">
+
+                  <div>
+
+                    <h3>Language</h3>
+
+                    <p class="muted">Choose the interface language.</p>
+
+                  </div>
+
+                  <select id="languageSelect">
+
+                    <option value="en-GB">English (UK)</option>
+
+                    <option value="en-US">English (US)</option>
+
+                  </select>
+
+                </label>
+
+                <label class="setting-block" for="fontModeSelect">
+
+                  <div>
+
+                    <h3>Readable font mode</h3>
+
+                    <p class="muted">Use stronger character spacing and simplified layout.</p>
+
+                  </div>
+
+                  <select id="fontModeSelect">
+
+                    <option value="lexend">Lexend</option>
+
+                    <option value="standard">Standard</option>
+
+                  </select>
+
+                </label>
+
+              </div>
+
+            </section>
+
+            <section class="card panel">
+
+              <div class="section-header">
+
+                <h2>System actions</h2>
+
+                <button class="pill-btn" type="button">Tools</button>
+
+              </div>
+
+              <div class="control-row">
+
+                <button id="exportSettingsBtn" class="secondary-btn" type="button">Export settings</button>
+
+                <button id="importSettingsBtn" class="secondary-btn" type="button">Import settings</button>
+
+                <button id="saveSettingsBtn" class="primary-btn" type="button">Save changes</button>
+
+                <input id="importSettingsInput" type="file" accept="application/json" hidden />
+
+              </div>
+
+            </section>
+
+          </div>
+
+        </section>
+
+      </main>
+
+      <footer class="site-footer" role="contentinfo">
+        <div class="site-footer__inner">
+          <p class="site-footer__brand">
+            Motability Operations Supplier Portal
+          </p>
+
+          <nav class="site-footer__links" aria-label="Footer links">
+            <a href="settings.html">Accessibility</a>
+            <a href="reports.html">Help</a>
+            <a href="mo_support.html">Contact MO Support</a>
+          </nav>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

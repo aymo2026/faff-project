@@ -1,0 +1,34 @@
+3rd_party_installer_portal/
+│
+├── index.html                 ← Dashboard
+│
+├── pages/
+│   ├── successul_survey_applicants.html
+│   ├── dispatch.html
+│   ├── mo_support.html
+│   ├── reports.html
+│   └── settings.html
+│
+├── css/
+│   ├── variables.css
+│   ├── layout.css
+│   ├── navbar.css
+│   ├── sidebar.css
+│   ├── components.css
+│   └── styles.css            ← imports everything
+│
+├── js/
+│   ├── app.js
+│   ├── theme.js
+│   ├── navbar.js
+│   ├── sidebar.js
+│   └── utils.js
+│
+├── assets/
+│   ├── images/
+│   ├── icons/
+│   └── logo/
+│
+└── README.md
+
+combined it all in the folder bc idk why the file path never works

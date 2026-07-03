@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reports</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="app-shell">
+
+    <aside class="sidebar">
+
+      <a class="sidebar-logo" href="index.html">
+
+        <img src="motability-logo.png" alt="Motability Operations" />
+
+      </a>
+
+      <nav class="sidebar-nav">
+
+        <a href="index.html">Dashboard</a>
+
+        <a href="successful_survey_applicants.html">Successful Survey Applicants</a>
+
+        <a href="dispatch.html">Dispatch</a>
+
+        <a href="gigs.html">Gigs</a>
+
+        <a href="mo_support.html">MO Support</a>
+
+        <a class="active" href="reports.html">Reports</a>
+
+        <a href="settings.html">Settings</a>
+
+      </nav>
+
+    </aside>
+
+    <div class="main-wrap">
+
+      <header class="topbar">
+
+        <div>
+
+          <h1>Reports</h1>
+
+          <p class="muted">Performance, delivery, usage, and support reporting</p>
+
+        </div>
+
+        <button id="themeToggle" class="theme-btn" type="button">Dark mode</button>
+
+      </header>
+
+      <main class="content reports-page">
+
+        <section class="kpi-row">
+
+          <article class="card kpi-card">
+
+            <p class="muted">Jobs completed</p>
+
+            <h2>142</h2>
+
+            <span class="status status-live">This month</span>
+
+          </article>
+
+          <article class="card kpi-card">
+
+            <p class="muted">Open issues</p>
+
+            <h2>11</h2>
+
+            <span class="status status-warn">Needs review</span>
+
+          </article>
+
+          <article class="card kpi-card">
+
+            <p class="muted">Customer satisfaction</p>
+
+            <h2>98%</h2>
+
+            <span class="status status-info">Strong</span>
+
+          </article>
+
+          <article class="card kpi-card">
+
+            <p class="muted">Avg dispatch time</p>
+
+            <h2>14m</h2>
+
+            <span class="status status-urgent">Improve</span>
+
+          </article>
+
+        </section>
+
+        <section class="reports-grid">
+
+          <div class="reports-column">
+
+            <section class="card panel">
+
+              <div class="section-header">
+
+                <h2>Performance overview</h2>
+
+                <button class="pill-btn">Export</button>
+
+              </div>
+
+              <div class="chart-placeholder">
+
+                <div class="chart-bars">
+
+                  <span style="height: 35%"></span>
+
+                  <span style="height: 52%"></span>
+
+                  <span style="height: 48%"></span>
+
+                  <span style="height: 68%"></span>
+
+                  <span style="height: 82%"></span>
+
+                  <span style="height: 60%"></span>
+
+                  <span style="height: 76%"></span>
+
+                </div>
+
+                <p class="muted">Placeholder for charts and trends</p>
+
+              </div>
+
+            </section>
+
+            <section class="card panel">
+
+              <div class="section-header">
+
+                <h2>Downloadable reports</h2>
+
+                <button class="pill-btn">Filter</button>
+
+              </div>
+
+              <div class="file-list">
+
+                <article class="file-item">
+
+                  <div>
+
+                    <h3>Monthly performance report</h3>
+
+                    <p class="muted">PDF • Updated today</p>
+
+                  </div>
+
+                  <span class="status status-info">PDF</span>
+
+                </article>
+
+                <article class="file-item">
+
+                  <div>
+
+                    <h3>Dispatch summary</h3>
+
+                    <p class="muted">XLSX • Updated today</p>
+
+                  </div>
+
+                  <span class="status status-live">Data</span>
+
+                </article>
+
+                <article class="file-item">
+
+                  <div>
+
+                    <h3>Support activity log</h3>
+
+                    <p class="muted">CSV • Updated yesterday</p>
+
+                  </div>
+
+                  <span class="status status-warn">CSV</span>
+
+                </article>
+
+                <article class="file-item">
+
+                  <div>
+
+                    <h3>Accessibility and alt solutions report</h3>
+
+                    <p class="muted">PDF • Updated this week</p>
+
+                  </div>
+
+                  <span class="status status-urgent">Priority</span>
+
+                </article>
+
+              </div>
+
+            </section>
+
+            <section class="card panel">
+
+              <div class="section-header">
+
+                <h2>Trend summary</h2>
+
+                <button class="pill-btn">View full stats</button>
+
+              </div>
+
+              <div class="mini-grid">
+
+                <div>
+
+                  <p class="muted">Successful surveys</p>
+
+                  <h3>Up 12%</h3>
+
+                </div>
+
+                <div>
+
+                  <p class="muted">Late installs</p>
+
+                  <h3>Down 8%</h3>
+
+                </div>
+
+                <div>
+
+                  <p class="muted">Support usage</p>
+
+                  <h3>Up 5%</h3>
+
+                </div>
+
+                <div>
+
+                  <p class="muted">Alt solutions</p>
+
+                  <h3>Up 9%</h3>
+
+                </div>
+
+              </div>
+
+            </section>
+
+          </div>
+
+          <div class="reports-column">
+
+            <section class="card panel">
+
+              <div class="section-header">
+
+                <h2>Operational report cards</h2>
+
+                <button class="pill-btn">Refresh</button>
+
+              </div>
+
+              <div class="details-grid">
+
+                <div>
+
+                  <p class="muted">Dispatch backlog</p>
+
+                  <h3>18 cases</h3>
+
+                </div>
+
+                <div>
+
+                  <p class="muted">Drone jobs</p>
+
+                  <h3>4 active</h3>
+
+                </div>
+
+                <div>
+
+                  <p class="muted">Courier LiDAR</p>
+
+                  <h3>3 deliveries</h3>
+
+                </div>
+
+                <div>
+
+                  <p class="muted">Battery support</p>
+
+                  <h3>6 orders</h3>
+
+                </div>
+
+              </div>
+
+            </section>
+
+            <section class="card panel">
+
+              <div class="section-header">
+
+                <h2>Case quality</h2>
+
+                <button class="pill-btn">Audit</button>
+
+              </div>
+
+              <div class="activity-list">
+
+                <p><strong>Quality score</strong> 96% of cases complete with full evidence.</p>
+
+                <p><strong>Missing docs</strong> 4 cases require uploads.</p>
+
+                <p><strong>Accessibility notes</strong> 100% tagged on new approvals.</p>
+
+                <p><strong>Escalations</strong> 2 open urgent cases.</p>
+
+              </div>
+
+            </section>
+
+            <section class="card panel">
+
+              <div class="section-header">
+
+                <h2>Reporting tools</h2>
+
+                <button class="pill-btn">Open tools</button>
+
+              </div>
+
+              <div class="control-row">
+
+                <button class="secondary-btn">Generate CSV</button>
+
+                <button class="secondary-btn">Generate PDF</button>
+
+                <button class="primary-btn">Send report</button>
+
+              </div>
+
+            </section>
+
+          </div>
+
+        </section>
+
+      </main>
+
+      <footer class="site-footer" role="contentinfo">
+        <div class="site-footer__inner">
+          <p class="site-footer__brand">
+            Motability Operations Supplier Portal
+          </p>
+
+          <nav class="site-footer__links" aria-label="Footer links">
+            <a href="settings.html">Accessibility</a>
+            <a href="reports.html">Help</a>
+            <a href="mo_support.html">Contact MO Support</a>
+          </nav>
+        </div>
+      </footer>
+
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+
+</body>
+</html>

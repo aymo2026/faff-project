@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MO Support</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="app-shell">
+
+    <aside class="sidebar">
+
+      <a class="sidebar-logo" href="index.html">
+
+        <img src="motability-logo.png" alt="Motability Operations" />
+
+      </a>
+
+      <nav class="sidebar-nav">
+
+        <a href="index.html">Dashboard</a>
+
+        <a href="successful_survey_applicants.html">Successful Survey Applicants</a>
+
+        <a href="dispatch.html">Dispatch</a>
+
+        <a href="gigs.html">Gigs</a>
+
+        <a class="active" href="mo_support.html">MO Support</a>
+
+        <a href="reports.html">Reports</a>
+
+        <a href="settings.html">Settings</a>
+
+      </nav>
+
+    </aside>
+
+    <div class="main-wrap">
+
+      <header class="topbar">
+
+        <div>
+
+          <h1>MO Support</h1>
+
+          <p class="muted">Messages, files, accessibility notes, and urgent escalation</p>
+
+        </div>
+
+        <button id="themeToggle" class="theme-btn" type="button">Dark mode</button>
+
+      </header>
+
+      <main class="content support-page">
+
+        <section class="kpi-row">
+
+          <article class="card kpi-card">
+
+            <p class="muted">Advisors online</p>
+
+            <h2>8</h2>
+
+            <span class="status status-live">Live</span>
+
+          </article>
+
+          <article class="card kpi-card">
+
+            <p class="muted">Open support cases</p>
+
+            <h2>6</h2>
+
+            <span class="status status-info">In progress</span>
+
+          </article>
+
+          <article class="card kpi-card">
+
+            <p class="muted">Urgent escalations</p>
+
+            <h2>2</h2>
+
+            <span class="status status-urgent">Needs attention</span>
+
+          </article>
+
+          <article class="card kpi-card">
+
+            <p class="muted">Files uploaded today</p>
+
+            <h2>14</h2>
+
+            <span class="status status-warn">New</span>
+
+          </article>
+
+        </section>
+
+        <section class="support-grid">
+
+          <div class="support-column">
+
+            <section class="card panel">
+
+              <div class="section-header">
+
+                <h2>Contact support</h2>
+
+                <button class="pill-btn">Available now</button>
+
+              </div>
+
+              <div class="contact-grid">
+
+                <div class="contact-box">
+
+                  <p class="muted">Email</p>
+
+                  <h3>support@motability.co.uk</h3>
+
+                </div>
+
+                <div class="contact-box">
+
+                  <p class="muted">Phone</p>
+
+                  <h3>0800 000 000</h3>
+
+                </div>
+
+                <div class="contact-box">
+
+                  <p class="muted">Callback</p>
+
+                  <h3>Within 15 mins</h3>
+
+                </div>
+
+                <div class="contact-box">
+
+                  <p class="muted">Channel</p>
+
+                  <h3>Video / Chat / Email</h3>
+
+                </div>
+
+              </div>
+
+              <div class="control-row">
+
+                <button class="primary-btn">Start video call</button>
+
+                <button class="secondary-btn">Live chat</button>
+
+                <button class="secondary-btn">Request callback</button>
+
+              </div>
+
+            </section>
+
+            <section class="card panel">
+
+              <div class="section-header">
+
+                <h2>Send a message</h2>
+
+                <button class="pill-btn">New case</button>
+
+              </div>
+
+              <form class="support-form">
+
+                <div class="form-grid">
+
+                  <label>
+
+                    <span>Email</span>
+
+                    <input type="email" placeholder="supplier@example.com" />
+
+                  </label>
+
+                  <label>
+
+                    <span>Phone</span>
+
+                    <input type="tel" placeholder="01234 567890" />
+
+                  </label>
+
+                  <label>
+
+                    <span>Preferred contact</span>
+
+                    <select>
+
+                      <option>Email</option>
+
+                      <option>Phone</option>
+
+                      <option>Video call</option>
+
+                      <option>Chat</option>
+
+                    </select>
+
+                  </label>
+
+                  <label>
+
+                    <span>Case reference</span>
+
+                    <input type="text" placeholder="MOT-24198" />
+
+                  </label>
+
+                </div>
+
+                <label class="full-width">
+
+                  <span>Message</span>
+
+                  <textarea rows="6" placeholder="Describe the issue, question, or support request..."></textarea>
+
+                </label>
+
+                <label class="full-width">
+
+                  <span>Upload files</span>
+
+                  <input type="file" multiple />
+
+                  <small class="muted">You can upload multiple files at once: photos, PDFs, certificates, reports, and screenshots.</small>
+
+                </label>
+
+                <div class="control-row">
+
+                  <button type="submit" class="primary-btn">Send support request</button>
+
+                  <button type="button" class="secondary-btn">Save draft</button>
+
+                </div>
+
+              </form>
+
+            </section>
+
+            <section class="card panel">
+
+              <div class="section-header">
+
+                <h2>Uploaded files</h2>
+
+                <button class="pill-btn">Manage</button>
+
+              </div>
+
+              <div class="file-list">
+
+                <article class="file-item">
+
+                  <div>
+
+                    <h3>SurveyPhoto_01.jpg</h3>
+
+                    <p class="muted">Uploaded 10:14</p>
+
+                  </div>
+
+                  <span class="status status-info">Image</span>
+
+                </article>
+
+                <article class="file-item">
+
+                  <div>
+
+                    <h3>RiskAssessment.pdf</h3>
+
+                    <p class="muted">Uploaded 10:20</p>
+
+                  </div>
+
+                  <span class="status status-live">PDF</span>
+
+                </article>
+
+                <article class="file-item">
+
+                  <div>
+
+                    <h3>CompletionNote.docx</h3>
+
+                    <p class="muted">Uploaded 10:33</p>
+
+                  </div>
+
+                  <span class="status status-warn">Doc</span>
+
+                </article>
+
+              </div>
+
+            </section>
+
+          </div>
+
+          <div class="support-column">
+
+            <section class="card panel">
+
+              <div class="section-header">
+
+                <h2>Customer accessibility profile</h2>
+
+                <button class="pill-btn">View case</button>
+
+              </div>
+
+              <div class="details-grid">
+
+                <div>
+
+                  <p class="muted">Communication preference</p>
+
+                  <h3>Phone first</h3>
+
+                </div>
+
+                <div>
+
+                  <p class="muted">Mobility notes</p>
+
+                  <h3>Wheelchair access</h3>
+
+                </div>
+
+                <div>
+
+                  <p class="muted">Assistance needed</p>
+
+                  <h3>Door support</h3>
+
+                </div>
+
+                <div>
+
+                  <p class="muted">Reasonable adjustments</p>
+
+                  <h3>Extended response time</h3>
+
+                </div>
+
+              </div>
+
+            </section>
+
+            <section class="card panel emergency-card">
+
+              <div class="section-header">
+
+                <h2>Emergency escalation</h2>
+
+                <button class="pill-btn">Urgent</button>
+
+              </div>
+
+              <p class="muted">
+
+                Use for safety issues, installation failures, customer risk, or stranded support cases.
+
+              </p>
+
+              <div class="control-row">
+
+                <button class="primary-btn">Call emergency line</button>
+
+                <button class="secondary-btn">Escalate case</button>
+
+              </div>
+
+            </section>
+
+            <section class="card panel">
+
+              <div class="section-header">
+
+                <h2>Knowledge centre</h2>
+
+                <button class="pill-btn">Open help</button>
+
+              </div>
+
+              <div class="chip-grid">
+
+                <span class="chip">Alternative solutions</span>
+
+                <span class="chip">Battery packs</span>
+
+                <span class="chip">Power banks</span>
+
+                <span class="chip">LiDAR guides</span>
+
+                <span class="chip">Drone manual</span>
+
+                <span class="chip">Accessibility guidance</span>
+
+                <span class="chip">Installation standards</span>
+
+                <span class="chip">FAQ</span>
+
+              </div>
+
+            </section>
+
+            <section class="card panel">
+
+              <div class="section-header">
+
+                <h2>Audit log</h2>
+
+                <button class="pill-btn">History</button>
+
+              </div>
+
+              <div class="activity-list">
+
+                <p><strong>09:21</strong> Support request opened.</p>
+
+                <p><strong>09:24</strong> Photo uploaded.</p>
+
+                <p><strong>09:30</strong> Advisor joined chat.</p>
+
+                <p><strong>09:42</strong> Case escalated.</p>
+
+                <p><strong>09:53</strong> File review completed.</p>
+
+              </div>
+
+            </section>
+
+          </div>
+
+        </section>
+
+      </main>
+
+      <footer class="site-footer" role="contentinfo">
+        <div class="site-footer__inner">
+          <p class="site-footer__brand">
+            Motability Operations Supplier Portal
+          </p>
+
+          <nav class="site-footer__links" aria-label="Footer links">
+            <a href="settings.html">Accessibility</a>
+            <a href="reports.html">Help</a>
+            <a href="mo_support.html">Contact MO Support</a>
+          </nav>
+        </div>
+      </footer>
+
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+
+</body>
+</html>

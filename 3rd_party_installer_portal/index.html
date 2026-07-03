@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Motability Operations | Supplier Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="app-shell">
+
+    <aside class="sidebar">
+
+      <a class="sidebar-logo" href="index.html">
+
+        <img src="motability-logo.png" alt="Motability Operations" />
+
+      </a>
+
+      <nav class="sidebar-nav">
+
+        <a class="active" href="index.html">Dashboard</a>
+
+        <a href="successful_survey_applicants.html">Successful Survey Applicants</a>
+
+        <a href="dispatch.html">Dispatch</a>
+
+        <a href="gigs.html">Gigs</a>
+
+        <a href="mo_support.html">MO Support</a>
+
+        <a href="reports.html">Reports</a>
+
+        <a href="settings.html">Settings</a>
+
+      </nav>
+
+    </aside>
+
+    <div class="main-wrap">
+
+      <header class="topbar">
+
+        <div>
+
+          <h1>Dashboard</h1>
+
+          <p class="muted">Everything suppliers need at a glance</p>
+
+        </div>
+
+        <button id="themeToggle" class="theme-btn" type="button">Dark mode</button>
+
+      </header>
+
+      <main class="content dashboard-page">
+
+        <section class="kpi-row">
+
+          <article class="card kpi-card">
+
+            <p class="muted">Survey results</p>
+
+            <h2>24</h2>
+
+            <span class="status status-info">Ready for review</span>
+
+          </article>
+
+          <article class="card kpi-card">
+
+            <p class="muted">Dispatch queue</p>
+
+            <h2>18</h2>
+
+            <span class="status status-urgent">Needs action</span>
+
+          </article>
+
+          <article class="card kpi-card">
+
+            <p class="muted">Alt solutions</p>
+
+            <h2>9</h2>
+
+            <span class="status status-warn">Physical / battery</span>
+
+          </article>
+
+          <article class="card kpi-card">
+
+            <p class="muted">MO support</p>
+
+            <h2>6</h2>
+
+            <span class="status status-live">Open chats</span>
+
+          </article>
+
+        </section>
+
+        <section class="dashboard-grid">
+
+          <div class="dashboard-column">
+
+            <section class="card panel">
+
+              <div class="section-header">
+
+                <h2>Survey results</h2>
+
+                <a class="pill-btn" href="successful_survey_applicants.html">Open page</a>
+
+              </div>
+
+              <p class="muted">
+
+                Access successful applicant details, survey notes, images, and installation recommendations.
+
+              </p>
+
+              <div class="details-grid">
+
+                <div>
+
+                  <p class="muted">Latest status</p>
+
+                  <h3>12 passed today</h3>
+
+                </div>
+
+                <div>
+
+                  <p class="muted">Needs review</p>
+
+                  <h3>4 flagged</h3>
+
+                </div>
+
+                <div>
+
+                  <p class="muted">Images uploaded</p>
+
+                  <h3>38 files</h3>
+
+                </div>
+
+                <div>
+
+                  <p class="muted">Next step</p>
+
+                  <h3>Assign solution</h3>
+
+                </div>
+
+              </div>
+
+            </section>
+
+            <section class="card panel">
+
+              <div class="section-header">
+
+                <h2>Access to applicant DB</h2>
+
+                <button class="pill-btn">Search</button>
+
+              </div>
+
+              <p class="muted">
+
+                View successful applicants, contact details, eligibility notes, and documents.
+
+              </p>
+
+              <div class="activity-list">
+
+                <p><strong>Applicant record</strong> View all survey-approved cases.</p>
+
+                <p><strong>Documents</strong> Access letters, forms, and ID files.</p>
+
+                <p><strong>Eligibility</strong> Confirm support status and case notes.</p>
+
+              </div>
+
+            </section>
+
+            <section class="card panel alt-solutions-card">
+
+              <div class="section-header">
+
+                <h2>Alt solutions</h2>
+
+                <button class="pill-btn">Decision support</button>
+
+              </div>
+
+              <p class="muted">
+
+                For cases that need a fallback solution: physical installation, battery pack, or power bank support.
+
+              </p>
+
+              <div class="alt-solutions-grid">
+
+                <div class="alt-solution-box">
+
+                  <p class="muted">Physical installation</p>
+
+                  <h3>Standard fit</h3>
+
+                </div>
+
+                <div class="alt-solution-box">
+
+                  <p class="muted">Battery pack</p>
+
+                  <h3>Temporary supply</h3>
+
+                </div>
+
+                <div class="alt-solution-box">
+
+                  <p class="muted">Power bank</p>
+
+                  <h3>Short-term support</h3>
+
+                </div>
+
+                <div class="alt-solution-box">
+
+                  <p class="muted">Status</p>
+
+                  <h3>Awaiting approval</h3>
+
+                </div>
+
+              </div>
+
+            </section>
+
+            <section class="card panel poster-card">
+
+              <div class="section-header">
+
+                <h2>Alt solutions poster</h2>
+
+                <button class="pill-btn">Open asset</button>
+
+              </div>
+
+              <p class="muted">
+
+                Put your poster here so suppliers can quickly review the alternative solutions flow.
+
+              </p>
+
+              <img
+
+                class="poster-image"
+
+                src="POSTER.png"
+
+                alt="Alternative solutions poster"
+
+              />
+
+            </section>
+
+          </div>
+
+          <div class="dashboard-column">
+
+            <section class="card panel">
+
+              <div class="section-header">
+
+                <h2>Dispatch</h2>
+
+                <a class="pill-btn" href="dispatch.html">Open page</a>
+
+              </div>
+
+              <p class="muted">
+
+                Move approved jobs into engineer dispatch, drone capture, courier LiDAR, or battery support.
+
+              </p>
+
+              <div class="mini-grid">
+
+                <div>
+
+                  <p class="muted">Ready</p>
+
+                  <h3>18 jobs</h3>
+
+                </div>
+
+                <div>
+
+                  <p class="muted">Drone</p>
+
+                  <h3>4 active</h3>
+
+                </div>
+
+                <div>
+
+                  <p class="muted">Courier</p>
+
+                  <h3>3 kits</h3>
+
+                </div>
+
+                <div>
+
+                  <p class="muted">Battery</p>
+
+                  <h3>6 orders</h3>
+
+                </div>
+
+              </div>
+
+            </section>
+
+            <section class="card panel">
+
+              <div class="section-header">
+
+                <h2>Gigs marketplace</h2>
+
+                <a class="pill-btn" href="gigs.html">Open page</a>
+
+              </div>
+
+              <p class="muted">
+
+                Uber-style local support for family, friends, and nearby helpers who can assist with installs.
+
+              </p>
+
+              <div class="activity-list">
+
+                <p><strong>Nearby helper</strong> Accepts short support tasks.</p>
+
+                <p><strong>Family helper</strong> Customer nominated support.</p>
+
+                <p><strong>Community impact</strong> Local jobs and paid assistance.</p>
+
+              </div>
+
+            </section>
+
+            <section class="card panel">
+
+              <div class="section-header">
+
+                <h2>MO support</h2>
+
+                <a class="pill-btn" href="mo_support.html">Open page</a>
+
+              </div>
+
+              <p class="muted">
+
+                Direct access to video call, chat, and email support for questions and escalations.
+
+              </p>
+
+              <div class="control-row">
+
+                <button class="secondary-btn">Video call</button>
+
+                <button class="secondary-btn">Chat</button>
+
+                <button class="secondary-btn">Email</button>
+
+              </div>
+
+            </section>
+
+            <section class="card panel">
+
+              <div class="section-header">
+
+                <h2>Today’s actions</h2>
+
+                <button class="pill-btn">Refresh</button>
+
+              </div>
+
+              <div class="activity-list">
+
+                <p><strong>1.</strong> Review survey results.</p>
+
+                <p><strong>2.</strong> Assign installation or alt solution.</p>
+
+                <p><strong>3.</strong> Dispatch engineer, drone, or courier kit.</p>
+
+                <p><strong>4.</strong> Confirm support channel if needed.</p>
+
+              </div>
+
+            </section>
+
+          </div>
+
+        </section>
+
+      </main>
+
+      <footer class="site-footer" role="contentinfo">
+        <div class="site-footer__inner">
+          <p class="site-footer__brand">
+            Motability Operations Supplier Portal
+          </p>
+
+          <nav class="site-footer__links" aria-label="Footer links">
+            <a href="settings.html">Accessibility</a>
+            <a href="reports.html">Help</a>
+            <a href="mo_support.html">Contact MO Support</a>
+          </nav>
+        </div>
+      </footer>
+
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Successful Survey Applicants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="app-shell">
+
+    <aside class="sidebar">
+
+      <a class="sidebar-logo" href="index.html">
+
+        <img src="motability-logo.png" alt="Motability Operations" />
+
+      </a>
+
+      <nav class="sidebar-nav">
+
+        <a href="index.html">Dashboard</a>
+
+        <a class="active" href="successful_survey_applicants.html">Successful Survey Applicants</a>
+
+        <a href="dispatch.html">Dispatch</a>
+
+        <a href="gigs.html">Gigs</a>
+
+        <a href="mo_support.html">MO Support</a>
+
+        <a href="reports.html">Reports</a>
+
+        <a href="settings.html">Settings</a>
+
+      </nav>
+
+    </aside>
+
+    <div class="main-wrap">
+
+      <header class="topbar">
+
+        <div>
+
+          <h1>Successful Survey Applicants</h1>
+
+          <p class="muted">Review approved applicants, survey outcomes, and next steps</p>
+
+        </div>
+
+        <button id="themeToggle" class="theme-btn" type="button">Dark mode</button>
+
+      </header>
+
+      <main class="content survey-page">
+
+        <section class="kpi-row">
+
+          <article class="card kpi-card">
+
+            <p class="muted">Approved today</p>
+
+            <h2>12</h2>
+
+          </article>
+
+          <article class="card kpi-card">
+
+            <p class="muted">Awaiting action</p>
+
+            <h2>5</h2>
+
+          </article>
+
+          <article class="card kpi-card">
+
+            <p class="muted">Needs support info</p>
+
+            <h2>3</h2>
+
+          </article>
+
+          <article class="card kpi-card">
+
+            <p class="muted">Ready for dispatch</p>
+
+            <h2>9</h2>
+
+          </article>
+
+        </section>
+
+        <section class="survey-grid">
+
+          <div class="card panel">
+
+            <div class="section-header">
+
+              <h2>Applicant list</h2>
+
+              <button class="pill-btn">Filter</button>
+
+            </div>
+
+            <div class="table-list">
+
+              <div class="table-row table-head">
+
+                <span>Name</span>
+
+                <span>Area</span>
+
+                <span>Status</span>
+
+                <span>Action</span>
+
+              </div>
+
+              <div class="table-row">
+
+                <span>Applicant A</span>
+
+                <span>Leeds</span>
+
+                <span><span class="status status-info">Approved</span></span>
+
+                <span><button class="secondary-btn">View</button></span>
+
+              </div>
+
+              <div class="table-row">
+
+                <span>Applicant B</span>
+
+                <span>York</span>
+
+                <span><span class="status status-live">Ready</span></span>
+
+                <span><button class="secondary-btn">View</button></span>
+
+              </div>
+
+              <div class="table-row">
+
+                <span>Applicant C</span>
+
+                <span>Sheffield</span>
+
+                <span><span class="status status-warn">Needs review</span></span>
+
+                <span><button class="secondary-btn">View</button></span>
+
+              </div>
+
+              <div class="table-row">
+
+                <span>Applicant D</span>
+
+                <span>Bradford</span>
+
+                <span><span class="status status-urgent">Dispatch now</span></span>
+
+                <span><button class="secondary-btn">View</button></span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="card panel">
+
+            <div class="section-header">
+
+              <h2>Applicant summary</h2>
+
+              <button class="pill-btn">Open case</button>
+
+            </div>
+
+            <div class="details-grid">
+
+              <div>
+
+                <p class="muted">Survey result</p>
+
+                <h3>Successful</h3>
+
+              </div>
+
+              <div>
+
+                <p class="muted">Installation type</p>
+
+                <h3>Standard charger</h3>
+
+              </div>
+
+              <div>
+
+                <p class="muted">Accessibility</p>
+
+                <h3>Accessible route required</h3>
+
+              </div>
+
+              <div>
+
+                <p class="muted">Evidence</p>
+
+                <h3>Photos + notes</h3>
+
+              </div>
+
+            </div>
+
+            <p class="muted">
+
+              This space can show the full applicant record once a row is selected.
+
+            </p>
+
+          </div>
+
+          <div class="card panel">
+
+            <div class="section-header">
+
+              <h2>Survey details</h2>
+
+              <button class="pill-btn">Download</button>
+
+            </div>
+
+            <div class="activity-list">
+
+              <p><strong>Survey notes</strong> Charger can be installed with support access.</p>
+
+              <p><strong>Recommendation</strong> Proceed to dispatch.</p>
+
+              <p><strong>Documents</strong> Consent and case files available.</p>
+
+              <p><strong>Risk</strong> None flagged.</p>
+
+            </div>
+
+          </div>
+
+          <div class="card panel">
+
+            <div class="section-header">
+
+              <h2>Next actions</h2>
+
+              <button class="pill-btn">Process</button>
+
+            </div>
+
+            <div class="control-row">
+
+              <button class="primary-btn">Send to dispatch</button>
+
+              <button class="secondary-btn">Request support</button>
+
+              <button class="secondary-btn">Mark for alt solution</button>
+
+            </div>
+
+            <div class="mini-grid">
+
+              <div>
+
+                <p class="muted">Priority</p>
+
+                <h3>High</h3>
+
+              </div>
+
+              <div>
+
+                <p class="muted">Owner</p>
+
+                <h3>MO team</h3>
+
+              </div>
+
+              <div>
+
+                <p class="muted">Target date</p>
+
+                <h3>Tomorrow</h3>
+
+              </div>
+
+              <div>
+
+                <p class="muted">Status</p>
+
+                <h3>Queued</h3>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+      </main>
+
+      <footer class="site-footer" role="contentinfo">
+        <div class="site-footer__inner">
+          <p class="site-footer__brand">
+            Motability Operations Supplier Portal
+          </p>
+
+          <nav class="site-footer__links" aria-label="Footer links">
+            <a href="settings.html">Accessibility</a>
+            <a href="reports.html">Help</a>
+            <a href="mo_support.html">Contact MO Support</a>
+          </nav>
+        </div>
+      </footer>
+
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+
+</body>
+</html>
